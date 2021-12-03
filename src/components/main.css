@@ -68,23 +68,29 @@ nav .volume input {
   width: 7vw;
   filter: brightness(2.5);
   opacity: 0;
-  transition: .5s;
+  transition: 0.5s;
 }
-nav .volume:hover input{
+nav .volume:hover input {
   opacity: 1;
+}
+button:hover {
+  cursor: pointer;
+  transform: scale(0.9);
 }
 button {
   background-color: #ffa723;
   color: #fff;
   padding: 1vw;
   border: none;
-  border-radius: 0.3vw;
+  border-radius: 1vw;
+  transition: 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1vw;
   font-size: 1.3vw;
 }
+
 button img {
   width: 1.8vw;
 }
@@ -328,8 +334,60 @@ footer .logo img {
   padding: 10vw 0px;
   background: #f8fcfe;
 }
+@keyframes cardfor {
+  0% {
+    transform: translateY(-5vw);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5vw);
+  }
+}
+@keyframes cardfor2 {
+  0% {
+    transform: translateY(0vw);
+  }
+  50% {
+    transform: translateY(-5vw);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.c__card:nth-child(2n + 1) {
+  animation: cardfor 4s infinite;
+}
+.c__card:nth-child(2n) {
+  animation: cardfor2 4s infinite;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffa723;
+  border-radius: 10vw;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6600;
+}
+
 .c__card {
+  cursor: pointer;
+
   background: #ffffff;
+  background-image: url(../img/dot.svg);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: 3vw;
   border: 1px solid #d6f3ff;
   box-shadow: 3px 4px 64px #d3f0ff;
   border-radius: 20px;
