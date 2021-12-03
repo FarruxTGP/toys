@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import ReactAudioPlayer from "react-audio-player";
+import music from "../img/music.mp3";
 function Navbar() {
-  let location = useLocation()
+  let location = useLocation();
   const homeClass = location.pathname === "/" ? "active" : "";
-  const aboutClass = location.pathname.match(/^\/about/) ? "active" : "";
-  const contactClass = location.pathname.match(/^\/contact/) ? "active" : "";
-
+  const aboutClass = location.pathname === "/about" ? "active" : "";
+  const productClass = location.pathname === "/product" ? "active" : "";
+  console.log(location.pathname);
+  let audio = useRef()
+  const [changeimg, setchangeimg] = useState("./img/nav/volumeUp.svg")
+  const play = () =>{
+    if(changeimg === "./img/nav/volumeMute.svg"){
+      setchangeimg("./img/nav/volumeUp.svg")
+      audio.current.audioEl.current.pause()  
+    }else{
+      audio.current.audioEl.current.play()
+      setchangeimg("./img/nav/volumeMute.svg")
+    }
+   
+  }
   return (
     <div className="nav">
       <nav>
@@ -13,20 +27,20 @@ function Navbar() {
           <img src="./img/nav/logo.svg" alt="" />
         </div>
         <ul>
-          <li className="active"></li>
+          <li className={homeClass}></li>
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <a href="">
+          <li className={productClass}>
+            <Link to="product">
               Products <img src="./img/nav/arrow.svg" alt="toys" />
-            </a>
+            </Link>
             <div className="drop">
               <a href="">Product</a>
               <a href="">Product</a>
             </div>
           </li>
-          <li>
+          <li className={aboutClass}>
             <Link to="about">
               About <img src="./img/nav/arrow.svg" alt="toys" />{" "}
             </Link>
@@ -46,8 +60,9 @@ function Navbar() {
           </li>
           <li>
             <div className="volume">
-              <div className="upper">
-                <img src="./img/nav/volumeUp.svg" alt="" />
+              <div className="upper" onClick={play}>
+                <img src={changeimg} alt="" />
+                <ReactAudioPlayer src={music} ref={audio}  autoPlay controls id={'ms'} style={{display: 'none'}}/>
               </div>
               <input type="range" name="" id="" />
             </div>
