@@ -1,5 +1,6 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { Link } from "react-router-dom";
 import "react-tabs/style/react-tabs.css";
 function Product() {
   return (
@@ -30,230 +31,275 @@ function Product() {
           </TabList>
           <TabPanel>
             <div className="offers">
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </TabPanel>
           <TabPanel>
             <div className="offers">
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </TabPanel>
           <TabPanel>
             <div className="offers">
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </TabPanel>
           <TabPanel>
             <div className="offers">
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </TabPanel>
           <TabPanel>
             <div className="offers">
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              <div className="offer">
-                <img src="./img/about/bear.png" alt="" />
-                <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-                <span>25 000 uzs</span>
-                <div className="hover__offer">
-                  <span>Подробнее</span>
-                  <img src="./img/home/cardar.svg" alt="" />
+              </Link>
+              <Link to="/product/3">
+                <div className="offer">
+                  <img src="./img/about/bear.png" alt="" />
+                  <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
+                  <span>25 000 uzs</span>
+                  <div className="hover__offer">
+                    <span>Подробнее</span>
+                    <img src="./img/home/cardar.svg" alt="" />
+                  </div>
                 </div>
-              </div>
-              
+              </Link>
             </div>
           </TabPanel>
         </div>

@@ -1,9 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
+@font-face {
+  font-family: "Sans";
+  src: url(../img/font.woff);
+}
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Sans";
 }
 nav {
   padding: 2.3vw 0;
@@ -261,7 +264,10 @@ footer .logo img {
 }
 .slick-next,
 .slick-prev {
-  transform: translate(0, -50%) scale(1.5);
+  transform: translate(0, -50%);
+}
+.slick-next:hover {
+  transform: scale(1) !important;
 }
 .card button {
   background: transparent;
@@ -727,4 +733,81 @@ nav li:nth-child(4)::before {
   to {
     opacity: 1;
   }
+}
+.offer__page {
+  padding: 7vw 0;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 3vw;
+}
+
+
+.item__offer h1{
+  font-size: 2.5vw;
+  color: #666666;
+}
+.control-dots, .carousel.carousel-slider .control-arrow{
+  display: none;
+}
+.carousel.carousel-slider{
+  width: 100% !important;
+  height: 36vw;
+}
+.carousel-root{
+  display: flex;
+  align-items: center;
+}
+.slide-holder{
+  border-radius: 2vw;
+  background-color: #efefef;
+  /* padding: 3vw; */
+  display: flex;
+  height: 36vw !important;
+  justify-content: center;
+  align-items: center;
+}
+.carousel .slide img{
+  width: 70% !important;
+  border-radius: 2vw;
+  padding: 2vw 0;
+}
+.blue{
+  background-color: #19b1f4;
+  border-radius: .5vw !important;
+}
+.carousel .thumbs{
+  display: flex;
+  transform: none !important;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.carousel .thumb{
+  margin: 1.5vw 2vw !important;
+  background-color: #efefef;
+  padding: 1.5vw !important;
+  border-radius: 2vw;
+  width: 13vw !important;
+}
+.carousel .thumb.selected{
+  display: none;
+}
+.carousel .thumbs-wrapper{
+  height: 100%;
+}
+.sp__around{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.sp__around p, .sp__around span{
+  color: #666666;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+
 }
