@@ -37,6 +37,11 @@ nav ul {
   justify-content: space-between;
 }
 nav ul a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4vw;
+  white-space: nowrap;
   text-decoration: none;
   color: #fff;
   font-size: 1vw;
@@ -83,6 +88,7 @@ button:hover {
 button {
   background-color: #ffa723;
   color: #fff;
+  white-space: nowrap;
   padding: 1vw;
   border: none;
   border-radius: 1vw;
@@ -265,9 +271,6 @@ footer .logo img {
 .slick-next,
 .slick-prev {
   transform: translate(0, -50%);
-}
-.slick-next:hover {
-  transform: scale(1) !important;
 }
 .card button {
   background: transparent;
@@ -455,7 +458,7 @@ footer .logo img {
 .body__protsess .column {
   display: flex;
   flex-direction: column;
-  width: 23%;
+  width: 18%;
   gap: 2vw;
 }
 .protsess,
@@ -586,7 +589,7 @@ footer .logo img {
 }
 nav .active::before {
   width: 7vw;
-  height: 16vw;
+  height: 15vw;
   background-color: #ffa723;
   position: absolute;
   content: "";
@@ -781,6 +784,10 @@ nav li:nth-child(4)::before {
   background-color: #19b1f4;
   border-radius: .5vw !important;
 }
+a.blue{
+  border-radius: 0px !important;
+  background-color: #19b1f4;
+}
 .carousel .thumbs{
   display: flex;
   transform: none !important;
@@ -828,4 +835,14 @@ nav li:nth-child(4)::before {
 }
 .offer__slider{
   margin-bottom: 7vw;
+}
+nav select{
+  position: absolute;
+  top: -3vw;
+  color: #19b1f4;
+
+  border: transparent;
+  background: #fff;
+  padding: .2vw;
+  border-radius: .2vw;
 }

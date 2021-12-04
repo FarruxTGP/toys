@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import Slider from "react-slick";
 import AOS from "aos";
+import { FormattedMessage } from "react-intl";
+
 import "aos/dist/aos.css";
 function Home() {
   useEffect(() => {
@@ -32,10 +34,15 @@ function Home() {
             <div>
               <div className="slide__target">
                 <div className="item__one">
-                  <h1>Скидка -30%</h1>
-                  <p>от розничной цене при покупке от 10 000 рублей </p>
+                  <h1>
+                    <FormattedMessage id="home.discount" /> -30%
+                  </h1>
+                  <p>
+                    <FormattedMessage id="home.slidetxt" />{" "}
+                  </p>
                   <button>
-                    подробнее <img src="./img/home/btnarrow.svg" alt="toys" />
+                    <FormattedMessage id="home.more" />{" "}
+                    <img src="./img/home/btnarrow.svg" alt="toys" />
                   </button>
                 </div>
                 <div className="item__two">
@@ -50,10 +57,15 @@ function Home() {
             <div>
               <div className="slide__target">
                 <div className="item__one">
-                  <h1>Скидка -30%</h1>
-                  <p>от розничной цене при покупке от 10 000 рублей </p>
+                  <h1>
+                    <FormattedMessage id="home.discount" /> -30%
+                  </h1>
+                  <p>
+                    <FormattedMessage id="home.slidetxt" />{" "}
+                  </p>
                   <button>
-                    подробнее <img src="./img/home/btnarrow.svg" alt="toys" />
+                    <FormattedMessage id="home.more" />{" "}
+                    <img src="./img/home/btnarrow.svg" alt="toys" />
                   </button>
                 </div>
                 <div className="item__two">
@@ -70,15 +82,21 @@ function Home() {
         <div className="download__cat">
           <div className="container">
             <button>
-              <img src="./img/home/down.svg" alt="toys" /> Скачать каталог
+              <img src="./img/home/down.svg" alt="toys" />{" "}
+              <FormattedMessage id="home.download" />
             </button>
           </div>
         </div>
         <div className="container">
           <div className="product">
             <div className="title">
-              <span>категория</span>
-              <h1>Продукты</h1>
+              <span>
+                {" "}
+                <FormattedMessage id="home.cotegory" />
+              </span>
+              <h1>
+                <FormattedMessage id="nav.products" />
+              </h1>
               <hr />
             </div>
             <div className="product__body">
@@ -86,36 +104,48 @@ function Home() {
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
                     <img src="./img/home/ayiqcha.png" alt="toys" />
-                    <p>Игрушка для уморазвития</p>
+                    <p>
+                      <FormattedMessage id="home.gamers" />
+                    </p>
                     <button>
-                      Подробнее <img src="./img/home/cardar.svg" alt="toys" />
+                      <FormattedMessage id="home.more" />{" "}
+                      <img src="./img/home/cardar.svg" alt="toys" />
                     </button>
                   </div>
                 </div>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
                     <img src="./img/home/kamazcard.png" alt="toys" />
-                    <p>Игрушка для уморазвития</p>
+                    <p>
+                      <FormattedMessage id="home.gamers" />
+                    </p>
                     <button>
-                      Подробнее <img src="./img/home/cardar.svg" alt="toys" />
+                      <FormattedMessage id="home.more" />{" "}
+                      <img src="./img/home/cardar.svg" alt="toys" />
                     </button>
                   </div>
                 </div>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
                     <img src="./img/home/shtuk.png" alt="toys" />
-                    <p>Игрушка для уморазвития</p>
+                    <p>
+                      <FormattedMessage id="home.gamers" />
+                    </p>
                     <button>
-                      Подробнее <img src="./img/home/cardar.svg" alt="toys" />
+                      <FormattedMessage id="home.more" />{" "}
+                      <img src="./img/home/cardar.svg" alt="toys" />
                     </button>
                   </div>
                 </div>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
                     <img src="./img/home/kazan.png" alt="toys" />
-                    <p>Игрушка для уморазвития</p>
+                    <p>
+                      <FormattedMessage id="home.gamers" />
+                    </p>
                     <button>
-                      Подробнее <img src="./img/home/cardar.svg" alt="toys" />
+                      <FormattedMessage id="home.more" />{" "}
+                      <img src="./img/home/cardar.svg" alt="toys" />
                     </button>
                   </div>
                 </div>
@@ -123,9 +153,12 @@ function Home() {
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
                     <img src="./img/home/kamazcard.png" alt="toys" />
-                    <p>Игрушка для уморазвития</p>
+                    <p>
+                      <FormattedMessage id="home.gamers" />
+                    </p>
                     <button>
-                      Подробнее <img src="./img/home/cardar.svg" alt="toys" />
+                      <FormattedMessage id="home.more" />{" "}
+                      <img src="./img/home/cardar.svg" alt="toys" />
                     </button>
                   </div>
                 </div>
@@ -136,22 +169,23 @@ function Home() {
         <div className="dino">
           <div className="container">
             <img data-aos="flip-right" src="./img/home/dino.png" alt="" />
-            <div className="dino__txt"  data-aos="flip-left">
+            <div className="dino__txt" data-aos="flip-left">
               <div className="title">
-                <span>о нас</span>
-                <h1>Cамый лучший производителть </h1>
+                <span>
+                  <FormattedMessage id="nav.about" />
+                </span>
+                <h1>
+                  <FormattedMessage id="home.mader" />
+                </h1>
                 <hr />
               </div>
               <div className="dino__txt__body">
                 <p>
-                  Компания была основана в 2009 году и сейчас производит сотни
-                  игрушек. Компания производит различные виды пластиковых
-                  игрушек для детей, а также экспортирует их по всему миру.
-                  Игрушки изготовлены из высококачественного пластика с
-                  использованием современных технологий.
+                  <FormattedMessage id="home.abouttxt" />
                 </p>
                 <button>
-                  подробнее <img src="./img/home/cardar.svg" alt="toys" />
+                  <FormattedMessage id="home.more" />{" "}
+                  <img src="./img/home/cardar.svg" alt="toys" />
                 </button>
               </div>
             </div>
@@ -159,27 +193,40 @@ function Home() {
         </div>
         <div className="on__counter">
           <div className="title">
-            <span>инфографика</span>
-            <h1>Мы в числах</h1>
+            <span>
+              <FormattedMessage id="home.infograph" />
+            </span>
+            <h1>
+              <FormattedMessage id="home.number" />
+            </h1>
             <hr />
           </div>
           <div className="container">
             <div className="counter__cards">
               <div className="c__card" data-aos="flip-left">
                 <h1>200</h1>
-                <p>Количество производств</p>
+                <p>
+                  {" "}
+                  <FormattedMessage id="home.numberof" />
+                </p>
               </div>
               <div className="c__card" data-aos="flip-left">
                 <h1>200</h1>
-                <p>Количество производств</p>
+                <p>
+                  <FormattedMessage id="home.numberof2" />
+                </p>
               </div>
               <div className="c__card" data-aos="flip-left">
                 <h1>200</h1>
-                <p>Количество производств</p>
+                <p>
+                  <FormattedMessage id="home.numberof3" />
+                </p>
               </div>
               <div className="c__card" data-aos="flip-left">
                 <h1>200</h1>
-                <p>Количество производств</p>
+                <p>
+                  <FormattedMessage id="home.numberof4" />
+                </p>
               </div>
             </div>
             <div className="txt__counter">
@@ -197,8 +244,10 @@ function Home() {
         </div>
         <div className="protsess">
           <div className="title">
-            <span>Процесс</span>
-            <h1>Мы как производим игрушки</h1>
+            <span>
+              <FormattedMessage id="home.process" />
+            </span>
+            <h1> <FormattedMessage id="home.processtit" /></h1>
             <hr />
           </div>
           <div className="body__protsess">
@@ -208,57 +257,57 @@ function Home() {
             <div className="column" style={{ textAlign: "right" }}>
               <p data-aos="zoom-out" style={{ left: "4vw" }}>
                 {" "}
-                Закупается пластмассовое сырьё (пропелиен, полиэтилен) самого
-                высокого качества
+                <FormattedMessage id="home.info1" />
               </p>
               <p data-aos="zoom-out" style={{ top: "1vw", right: "1vw" }}>
-                Для безопасности детей сырьё подвергают повторной очистке с
-                помощью специальной техники
+                <FormattedMessage id="home.info2" />
               </p>
               <p data-aos="zoom-out" style={{ top: "1vw", right: "1vw" }}>
-                Игрушки упаковываются в формы специальными механиками
+                <FormattedMessage id="home.info3" />
               </p>
               <p data-aos="zoom-out" style={{ top: "3vw", right: "-1vw" }}>
-                Для работы на станках нанимается необходимая рабочая сила
+                <FormattedMessage id="home.info4" />
               </p>
               <p data-aos="zoom-out" style={{ top: "3vw", right: "-3vw" }}>
-                Функции станков настраиваются для выпуска качественной продукции
+                <FormattedMessage id="home.info5" />
               </p>
               <p data-aos="zoom-out" style={{ top: "2vw", right: "-10vw" }}>
                 {" "}
-                Станки запускаются при необходимой температуре
+                <FormattedMessage id="home.info6" />
               </p>
             </div>
             <div className="column" style={{ textAlign: "left" }}>
               <p data-aos="zoom-out" style={{ right: "4vw" }}>
                 {" "}
-                Закупается пластмассовое сырьё (пропелиен, полиэтилен) самого
-                высокого качества
+                <FormattedMessage id="home.info7" />
               </p>
               <p data-aos="zoom-out">
-                Для безопасности детей сырьё подвергают повторной очистке с
-                помощью специальной техники
+                <FormattedMessage id="home.info8" />
               </p>
               <p data-aos="zoom-out" style={{ top: "1vw", left: "1vw" }}>
-                Игрушки упаковываются в формы специальными механиками
+                <FormattedMessage id="home.info9" />
               </p>
               <p data-aos="zoom-out" style={{ top: "3vw", left: "-1vw" }}>
-                Для работы на станках нанимается необходимая рабочая сила
+                <FormattedMessage id="home.info10" />
               </p>
               <p data-aos="zoom-out" style={{ top: "3vw", left: "-3vw" }}>
-                Функции станков настраиваются для выпуска качественной продукции
+                <FormattedMessage id="home.info11" />
               </p>
               <p data-aos="zoom-out" style={{ top: "2vw", left: "-10vw" }}>
                 {" "}
-                Станки запускаются при необходимой температуре
+                <FormattedMessage id="home.info12" />
               </p>
             </div>
           </div>
         </div>
         <div className="export">
           <div className="title">
-            <span>Мы в мире!</span>
-            <h1>Куда мы экспортируем?</h1>
+            <span>
+              <FormattedMessage id="home.world" />
+            </span>
+            <h1>
+              <FormattedMessage id="home.world2" />
+            </h1>
             <hr />
           </div>
           <div className="container" data-aos="zoom-in-down">
@@ -277,8 +326,12 @@ function Home() {
         </div>
         <div className="farm">
           <div className="title">
-            <span>Смотрите в 360 градусе</span>
-            <h1>Шоврум и завод</h1>
+            <span>
+              <FormattedMessage id="home.gradus" />
+            </span>
+            <h1>
+              <FormattedMessage id="nav.showroom" />
+            </h1>
             <hr />
           </div>
           <div className="container">
@@ -287,21 +340,24 @@ function Home() {
                 <img src="./img/home/farm1.png" alt="toys uzb" />
                 <button>
                   <img src="./img/home/360.svg" alt="toys" />
-                  Cмотреть шоурум
+                  <FormattedMessage id="home.gradusbtn" />
                 </button>
               </div>
               <div className="item" data-aos="flip-left">
                 <img src="./img/home/farm2.png" alt="toys uzb" />
                 <button>
                   <img src="./img/home/360.svg" alt="toys" />
-                  Cмотреть завод
+                  <FormattedMessage id="home.gradusbtn2" />
                 </button>
               </div>
             </div>
             <div className="product partner">
               <div className="title">
-                <span>на доверяют</span>
-                <h1>Партнеры</h1>
+                <span>
+                  {" "}
+                  <FormattedMessage id="home.prtitle" />
+                </span>
+                <h1><FormattedMessage id="nav.partner" /></h1>
                 <hr />
               </div>
               <div className="product__body">
@@ -339,7 +395,7 @@ function Home() {
         </div>
         <div className="contact">
           <form>
-            <h1>Есть вопросы? Мы вам перезвоним</h1>
+            <h1><FormattedMessage id="home.form" /></h1>
             <div className="row">
               <input type="text" placeholder="Ваш номер" />
               <input type="text" placeholder="Ваша имя" />
