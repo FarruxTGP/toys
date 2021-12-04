@@ -667,6 +667,12 @@ nav li:nth-child(4)::before {
   gap: 1vw;
   animation: fadein 1s both;
 }
+.offers a{
+  color: #666666;
+}
+*{
+  text-decoration: none;
+}
 .offer p {
   font-size: 0.7vw;
   text-align: center;
@@ -804,10 +810,22 @@ nav li:nth-child(4)::before {
 }
 .sp__around p, .sp__around span{
   color: #666666;
+  font-size: 1vw;
+  line-height: 1.9vw;
 }
 .flex{
   display: flex;
   align-items: center;
   gap: 3vw;
 
+}
+.slick-slider a{
+  padding: 2vw;
+  color: #666666;
+}
+.offer__slider .slick-prev{
+  transform: rotate(180deg);
+}
+.offer__slider{
+  margin-bottom: 7vw;
 }
