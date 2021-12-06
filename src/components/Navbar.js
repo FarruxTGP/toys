@@ -30,7 +30,7 @@ function Navbar(props) {
         <ul>
           <li className={homeClass}></li>
           <li>
-            <Link to="/">
+            <Link to="/" style={{width: '2.6vw'}}>
               <FormattedMessage id="nav.home" />
             </Link>
           </li>

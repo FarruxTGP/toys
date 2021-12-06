@@ -1,8 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Slider from "react-slick";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
+
+const modalStyle = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 function Offer() {
   const settings2 = {
     infinite: true,
@@ -10,6 +22,14 @@ function Offer() {
     slidesToShow: 4,
     slidesToScroll: 1,
   };
+  const [modalIsOpen, setIsOpen] = useState(false)
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <>
       <div className="container offer__page">
@@ -51,7 +71,7 @@ function Offer() {
             <div className="price">
               <span>25 000 uzs</span>
             </div>
-            <button>Заказать</button>
+            <button onClick={openModal}>Заказать</button>
           </div>
         </div>
       </div>
@@ -125,6 +145,18 @@ function Offer() {
           </Link>
         </Slider>
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={modalStyle}
+        contentLabel="Example Modal"
+      >
+        <form>
+          <input type="text" placeholder="Ваш номер или e-mail" />
+          <input type="text" placeholder="Ваша имя"  />
+          <button>Заказать</button>
+        </form>
+      </Modal>
     </>
   );
 }
