@@ -3,11 +3,10 @@ import "./components/main.css";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ROUTES } from "./routes/routes.js";
-
 import { useContext } from 'react'
 
 function App() {
-
+  
   return (
     <div className="App">
       <Router>

@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Slider from "react-slick";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 import Modal from "react-modal";
-
+import axios from "axios";
+import { Context } from "../components/Wrapper";
 const modalStyle = {
   content: {
     top: "50%",
@@ -16,25 +18,49 @@ const modalStyle = {
   },
 };
 function Offer() {
+  const context = useContext(Context);
+  let location = useParams();
+  console.log(location);
   const settings2 = {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
   };
-  const [modalIsOpen, setIsOpen] = useState(false)
+  const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
   }
   function closeModal() {
     setIsOpen(false);
   }
+  const [rest, setrest] = useState([]);
+  useEffect(() => {
+    const axiosGet = async () => {
+      const response = await axios.get(
+        "https://toys-abba.techdatasoft.uz/api/v1/offers"
+      );
+      setrest(response.data);
+    };
+    axiosGet();
+  }, []);
+  let { id } = useParams();
+  const activeIds = [Number(id)];
+  const result = rest.filter(({ id }) => activeIds.includes(id));
+  const offer = result[0];
+  console.log(offer);
 
   return (
     <>
       <div className="container offer__page">
         <div className="item__offer">
-          <h1>Mattel Barbie GTN61 </h1>
+          <h1>
+            {context.locale === "uz"
+              ? offer?.name_uz
+              : context.locale === "ru"
+              ? offer?.name_ru
+              : offer?.name_en}
+          </h1>
           <Carousel
             showThumbs={true}
             showStatus={false}
@@ -44,32 +70,48 @@ function Offer() {
             width="600px"
           >
             <div className="slide-holder">
-              <img className={"img__one"} src={"/img/about/bear.png"} />
+              <img
+                className={"img__one"}
+                src={"https://toys-abba.techdatasoft.uz/img/" + offer?.img?.[0]}
+              />
             </div>
             <div className="slide-holder">
-              <img className={"img__one"} src={"/img/about/bear.png"} />
+              <img
+                className={"img__one"}
+                src={"https://toys-abba.techdatasoft.uz/img/" + offer?.img?.[1]}
+              />
             </div>
             <div className="slide-holder">
-              <img className={"img__one"} src={"/img/about/bear.png"} />
+              <img
+                className={"img__one"}
+                src={"https://toys-abba.techdatasoft.uz/img/" + offer?.img?.[2]}
+              />
             </div>
           </Carousel>
         </div>
         <div className="item__offer sp__around">
           <button className="blue">Характеристики</button>
           <p>
-            Радиоуправляемая спортивная машина с металлическим корпусом и
-            подвижными колесами. Дизайн красного цвета, с фирменными знаками
-            хоккейной команды Red machine. Скорость движения около 10 км/ч. В
-            комплекте пульт, работающий на частоте 2.4 ГГц, и USB-зарядка. Длина
-            машины 25 см.{" "}
+            {context.locale === "uz"
+              ? offer?.title_uz
+              : context.locale === "ru"
+              ? offer?.title_ru
+              : offer?.title_en}
+            .{" "}
           </p>
           <span>
             {" "}
-            <b>Внимание! </b> Для работы игрушки необходимы 2 батарейки АА.
+            <b>Внимание! </b>{" "}
+            {context.locale === "uz"
+              ? offer?.info_uz
+              : context.locale === "ru"
+              ? offer?.info_ru
+              : offer?.info_en}
+            .
           </span>
           <div className="flex">
             <div className="price">
-              <span>25 000 uzs</span>
+              <span>{offer?.price} uzs</span>
             </div>
             <button onClick={openModal}>Заказать</button>
           </div>
@@ -77,72 +119,29 @@ function Offer() {
       </div>
       <div className="container offer__slider">
         <Slider {...settings2}>
-          <Link to="/product/3">
-            <div className="offer">
-              <img src="/img/about/bear.png" alt="" />
-              <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-              <span>25 000 uzs</span>
-              <div className="hover__offer">
-                <span>Подробнее</span>
-                <img src="/img/home/cardar.svg" alt="" />
+          {rest.map((item) => (
+            <a href={"/product/" + item.id}>
+              <div className="offer">
+                <img
+                  src={"https://toys-abba.techdatasoft.uz/img/" + item.img[0]}
+                  alt=""
+                />
+                <p>
+                  {" "}
+                  {context.locale === "uz"
+                    ? offer?.name_uz
+                    : context.locale === "ru"
+                    ? offer?.name_ru
+                    : offer?.name_en}
+                </p>
+                <span>25 000 uzs</span>
+                <div className="hover__offer">
+                  <span>Подробнее</span>
+                  <img src={"/img/home/cardar.svg"} alt="" />
+                </div>
               </div>
-            </div>
-          </Link>
-          <Link to="/product/3">
-            <div className="offer">
-              <img src="/img/about/bear.png" alt="" />
-              <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-              <span>25 000 uzs</span>
-              <div className="hover__offer">
-                <span>Подробнее</span>
-                <img src="/img/home/cardar.svg" alt="" />
-              </div>
-            </div>
-          </Link>
-          <Link to="/product/3">
-            <div className="offer">
-              <img src="/img/about/bear.png" alt="" />
-              <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-              <span>25 000 uzs</span>
-              <div className="hover__offer">
-                <span>Подробнее</span>
-                <img src="/img/home/cardar.svg" alt="" />
-              </div>
-            </div>
-          </Link>
-          <Link to="/product/3">
-            <div className="offer">
-              <img src="/img/about/bear.png" alt="" />
-              <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-              <span>25 000 uzs</span>
-              <div className="hover__offer">
-                <span>Подробнее</span>
-                <img src="/img/home/cardar.svg" alt="" />
-              </div>
-            </div>
-          </Link>
-          <Link to="/product/3">
-            <div className="offer">
-              <img src="/img/about/bear.png" alt="" />
-              <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-              <span>25 000 uzs</span>
-              <div className="hover__offer">
-                <span>Подробнее</span>
-                <img src="/img/home/cardar.svg" alt="" />
-              </div>
-            </div>
-          </Link>
-          <Link to="/product/3">
-            <div className="offer">
-              <img src="/img/about/bear.png" alt="" />
-              <p>Mattel Barbie GTN61 Барби Набор игровой "Клиника"</p>
-              <span>25 000 uzs</span>
-              <div className="hover__offer">
-                <span>Подробнее</span>
-                <img src="/img/home/cardar.svg" alt="" />
-              </div>
-            </div>
-          </Link>
+            </a>
+          ))}
         </Slider>
       </div>
       <Modal
@@ -153,7 +152,7 @@ function Offer() {
       >
         <form>
           <input type="text" placeholder="Ваш номер или e-mail" />
-          <input type="text" placeholder="Ваша имя"  />
+          <input type="text" placeholder="Ваша имя" />
           <button>Заказать</button>
         </form>
       </Modal>

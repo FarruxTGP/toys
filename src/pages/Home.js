@@ -4,13 +4,14 @@ import AOS from "aos";
 import { FormattedMessage } from "react-intl";
 
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 function Home() {
   useEffect(() => {
     AOS.init({
-      offset: 0,
+      offset: 400,
       duration: 700,
       easing: "ease-in-sine",
-      delay: 0,
+      delay: 100,
     });
     AOS.refresh();
   }, []);
@@ -23,8 +24,30 @@ function Home() {
   const settings2 = {
     infinite: true,
     speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 6,
+        }
+      },
+    ]
+  };
+  const settings3 = {
+    infinite: true,
+    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+        }
+      },
+    ]
   };
   return (
     <div>
@@ -103,70 +126,71 @@ function Home() {
               <Slider {...settings2}>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <img src="./img/home/ayiqcha.png" alt="toys" />
+                    <Link to="product">
+                      <img src="./img/home/ayiqcha.png" alt="toys" />
+                    </Link>
                     <p>
-                      <FormattedMessage id="home.gamers" />
+                      <FormattedMessage id="cotg.4" />
                     </p>
-                    <button>
-                      <FormattedMessage id="home.more" />{" "}
-                      <img src="./img/home/cardar.svg" alt="toys" />
-                    </button>
                   </div>
                 </div>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <img src="./img/home/kamazcard.png" alt="toys" />
+                    <Link to="product">
+                      <img src="./img/home/kamazcard.png" alt="toys" />
+                    </Link>
                     <p>
-                      <FormattedMessage id="home.gamers" />
+                      <FormattedMessage id="cotg.1" />
                     </p>
-                    <button>
-                      <FormattedMessage id="home.more" />{" "}
-                      <img src="./img/home/cardar.svg" alt="toys" />
-                    </button>
                   </div>
                 </div>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <img src="./img/home/shtuk.png" alt="toys" />
+                    <Link to="product">
+                      <img src="./img/home/shtuk.png" alt="toys" />
+                    </Link>
                     <p>
-                      <FormattedMessage id="home.gamers" />
+                      <FormattedMessage id="cotg.2" />
                     </p>
-                    <button>
-                      <FormattedMessage id="home.more" />{" "}
-                      <img src="./img/home/cardar.svg" alt="toys" />
-                    </button>
                   </div>
                 </div>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <img src="./img/home/kazan.png" alt="toys" />
+                    <Link to="product">
+                      <img src="./img/home/kazan.png" alt="toys" />
+                    </Link>
                     <p>
-                      <FormattedMessage id="home.gamers" />
+                      <FormattedMessage id="cotg.3" />
                     </p>
-                    <button>
-                      <FormattedMessage id="home.more" />{" "}
-                      <img src="./img/home/cardar.svg" alt="toys" />
-                    </button>
                   </div>
                 </div>
 
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <img src="./img/home/kamazcard.png" alt="toys" />
+                    <Link to="product">
+                      <img src="./img/home/skill.png" alt="toys" />
+                    </Link>
                     <p>
-                      <FormattedMessage id="home.gamers" />
+                      <FormattedMessage id="cotg.2" />
                     </p>
-                    <button>
-                      <FormattedMessage id="home.more" />{" "}
-                      <img src="./img/home/cardar.svg" alt="toys" />
-                    </button>
+                  </div>
+                </div>
+
+                <div className={"card__slide"}>
+                  <div className="card" data-aos="flip-left">
+                    <Link to="product">
+                      <img src="./img/home/umer.png" alt="toys" />
+                    </Link>
+                    <p>
+                      <FormattedMessage id="cotg.5" />
+                    </p>
                   </div>
                 </div>
               </Slider>
             </div>
           </div>
         </div>
-        <div className="dino">
+        <div className="dino" data-aos="fade-up">
           <div className="container">
             <img data-aos="flip-right" src="./img/home/dino.png" alt="" />
             <div className="dino__txt" data-aos="flip-left">
@@ -247,7 +271,10 @@ function Home() {
             <span>
               <FormattedMessage id="home.process" />
             </span>
-            <h1> <FormattedMessage id="home.processtit" /></h1>
+            <h1>
+              {" "}
+              <FormattedMessage id="home.processtit" />
+            </h1>
             <hr />
           </div>
           <div className="body__protsess">
@@ -255,7 +282,7 @@ function Home() {
               <img src="./img/home/tree.svg" alt="" />
             </div>
             <div className="column" style={{ textAlign: "right" }}>
-              <p data-aos="zoom-out" style={{ left: "4vw" }}>
+              <p data-aos="zoom-out" style={{ left: "3vw" }}>
                 {" "}
                 <FormattedMessage id="home.info1" />
               </p>
@@ -265,19 +292,19 @@ function Home() {
               <p data-aos="zoom-out" style={{ top: "1vw", right: "1vw" }}>
                 <FormattedMessage id="home.info3" />
               </p>
-              <p data-aos="zoom-out" style={{ top: "3vw", right: "-1vw" }}>
+              <p data-aos="zoom-out" style={{ top: "3vw", right: "0vw" }}>
                 <FormattedMessage id="home.info4" />
               </p>
               <p data-aos="zoom-out" style={{ top: "3vw", right: "-3vw" }}>
                 <FormattedMessage id="home.info5" />
               </p>
-              <p data-aos="zoom-out" style={{ top: "2vw", right: "-10vw" }}>
+              <p data-aos="zoom-out" style={{ top: "2vw", right: "-9vw" }}>
                 {" "}
                 <FormattedMessage id="home.info6" />
               </p>
             </div>
             <div className="column" style={{ textAlign: "left" }}>
-              <p data-aos="zoom-out" style={{ right: "4vw" }}>
+              <p data-aos="zoom-out" style={{ right: "3vw" }}>
                 {" "}
                 <FormattedMessage id="home.info7" />
               </p>
@@ -287,13 +314,13 @@ function Home() {
               <p data-aos="zoom-out" style={{ top: "1vw", left: "1vw" }}>
                 <FormattedMessage id="home.info9" />
               </p>
-              <p data-aos="zoom-out" style={{ top: "3vw", left: "-1vw" }}>
+              <p data-aos="zoom-out" style={{ top: "3vw", left: "0vw" }}>
                 <FormattedMessage id="home.info10" />
               </p>
               <p data-aos="zoom-out" style={{ top: "3vw", left: "-3vw" }}>
                 <FormattedMessage id="home.info11" />
               </p>
-              <p data-aos="zoom-out" style={{ top: "2vw", left: "-10vw" }}>
+              <p data-aos="zoom-out" style={{ top: "2vw", left: "-9vw" }}>
                 {" "}
                 <FormattedMessage id="home.info12" />
               </p>
@@ -324,78 +351,104 @@ function Home() {
             <img src="./img/home/map.png" alt="map toys" />
           </div>
         </div>
-        <div className="farm">
-          <div className="title">
-            <span>
-              <FormattedMessage id="home.gradus" />
-            </span>
-            <h1>
-              <FormattedMessage id="nav.showroom" />
-            </h1>
-            <hr />
-          </div>
-          <div className="container">
-            <div className="dubl">
-              <div className="item" data-aos="flip-left">
-                <img src="./img/home/farm1.png" alt="toys uzb" />
-                <button>
-                  <img src="./img/home/360.svg" alt="toys" />
-                  <FormattedMessage id="home.gradusbtn" />
-                </button>
-              </div>
-              <div className="item" data-aos="flip-left">
-                <img src="./img/home/farm2.png" alt="toys uzb" />
-                <button>
-                  <img src="./img/home/360.svg" alt="toys" />
-                  <FormattedMessage id="home.gradusbtn2" />
-                </button>
-              </div>
+        <div id="showroom">
+          <div className="farm">
+            <div className="title">
+              <span>
+                <FormattedMessage id="home.gradus" />
+              </span>
+              <h1>
+                <FormattedMessage id="nav.showroom" />
+              </h1>
+              <hr />
             </div>
-            <div className="product partner">
-              <div className="title">
-                <span>
-                  {" "}
-                  <FormattedMessage id="home.prtitle" />
-                </span>
-                <h1><FormattedMessage id="nav.partner" /></h1>
-                <hr />
+            <div className="container">
+              <div className="dubl">
+                <div className="item" data-aos="flip-left">
+                  <img src="./img/home/farm1.png" alt="toys uzb" />
+                  <button>
+                    <img src="./img/home/360.svg" alt="toys" />
+                    <FormattedMessage id="home.gradusbtn" />
+                  </button>
+                </div>
+                <div className="item" data-aos="flip-left">
+                  <img src="./img/home/farm2.png" alt="toys uzb" />
+                  <button>
+                    <img src="./img/home/360.svg" alt="toys" />
+                    <FormattedMessage id="home.gradusbtn2" />
+                  </button>
+                </div>
               </div>
-              <div className="product__body">
-                <Slider {...settings2}>
-                  <div className={"card__slide"}>
-                    <div className="card" data-aos="flip-left">
-                      <img src="./img/home/erkatoy.png" alt="toys" />
+              <div id="partner">
+              <div className="product partner">
+                <div className="title">
+                  <span>
+                    {" "}
+                    <FormattedMessage id="home.prtitle" />
+                  </span>
+                  <h1>
+                    <FormattedMessage id="nav.partner" />
+                  </h1>
+                  <hr />
+                </div>
+                <div className="product__body">
+                  <Slider {...settings3}>
+                    <div className={"card__slide"}>
+                      <div className="card" data-aos="flip-left">
+                        <img src="./img/home/erkatoy.svg" alt="toys" />
+                      </div>
                     </div>
-                  </div>
-                  <div className={"card__slide"}>
-                    <div className="card" data-aos="flip-left">
-                      <img src="./img/home/shag.png" alt="toys" />
+                    <div className={"card__slide"}>
+                      <div className="card" data-aos="flip-left">
+                        <img
+                          src="./img/home/shag.svg"
+                          style={{ height: "13vw" }}
+                          alt="toys"
+                          className="h-21"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className={"card__slide"}>
-                    <div className="card" data-aos="flip-left">
-                      <img src="./img/home/new.png" alt="toys" />
-                    </div>
-                  </div>
-                  <div className={"card__slide"}>
-                    <div className="card" data-aos="flip-left">
-                      <img src="./img/home/jiraf.png" alt="toys" />
-                    </div>
-                  </div>
+                    <div className={"card__slide"}>
+                      <div className="card" data-aos="flip-left">
+                        <img
+                          src="./img/home/new.svg"
+                          style={{ height: "13vw" }}
+                          alt="toys"
+                          className="h-21"
 
-                  <div className={"card__slide"}>
-                    <div className="card" data-aos="flip-left">
-                      <img src="./img/home/shag.png" alt="toys" />
+                        />
+                      </div>
                     </div>
-                  </div>
-                </Slider>
+                    <div className={"card__slide"}>
+                      <div className="card" data-aos="flip-left">
+                        <img src="./img/home/jiraf.svg" alt="toys" />
+                      </div>
+                    </div>
+
+                    <div className={"card__slide"}>
+                      <div className="card" data-aos="flip-left">
+                        <img
+                          src="./img/home/shag.svg"
+                          style={{ height: "13vw" }}
+                          alt="toys"
+                          className="h-21 d-none"
+
+                        />
+                      </div>
+                    </div>
+                  </Slider>
+                </div>
+              </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="contact">
+
+        <div className="contact" id="contact">
           <form>
-            <h1><FormattedMessage id="home.form" /></h1>
+            <h1>
+              <FormattedMessage id="home.form" />
+            </h1>
             <div className="row">
               <input type="text" placeholder="Ваш номер" />
               <input type="text" placeholder="Ваша имя" />

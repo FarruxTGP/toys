@@ -21,64 +21,71 @@ function Navbar(props) {
       setchangeimg("/img/nav/volumeMute.svg");
     }
   };
+  const mute = () =>{
+    setchangeimg("/img/nav/volumeMute.svg") && console.log(audio.current.audioEl.current)
+  }
+  const change =(e)=>{
+    if(e.target.value >= 1){
+      audio.current.audioEl.current.play();
+    }else{
+      audio.current.audioEl.current.pause();
+
+    }
+    e.target.value >= 50 ? setchangeimg("/img/nav/volumeUp.svg") :e.target.value <= 1 ?  mute(): setchangeimg("/img/nav/volumeLow.svg")
+  }
+  const [isActive, setActive] = useState(false);
+
+  const toggleClass = () => {
+    setActive(!isActive);
+  };
+
   return (
     <div className="nav">
       <nav>
         <div className="logo">
-          <img src="/img/nav/logo.svg" alt="" />
+         <Link to="/"> <img src="/img/nav/logo.svg" alt="" /></Link>
         </div>
-        <ul>
+        <ul   className={isActive ? 'activet': null} >
           <li className={homeClass}></li>
-          <li>
+          <li onClick={toggleClass}>
             <Link to="/" style={{width: '2.6vw'}}>
               <FormattedMessage id="nav.home" />
             </Link>
           </li>
-          <li className={productClass}>
-            <Link to="product">
+          <li className={productClass}  onClick={toggleClass}>
+            <Link to="/product">
               <FormattedMessage id="nav.products" />
-              <img src="/img/nav/arrow.svg" alt="toys" />
             </Link>
-            <div className="drop">
-              <a href="">Product</a>
-              <a href="" className="blue">
-                Product
-              </a>
-            </div>
           </li>
-          <li className={aboutClass}>
-            <Link to="about">
+          <li className={aboutClass}  onClick={toggleClass}>
+            <Link to="/about">
               <FormattedMessage id="nav.about" />
-              <img src="/img/nav/arrow.svg" alt="toys" />{" "}
             </Link>
-            <div className="drop">
-              <a href="">Product</a>
-              <a href="" className="blue">
-                Product
-              </a>
-            </div>
           </li>
-          <li>
-            <a href="">
+          <li >
+            <a href="/#showroom" onClick={toggleClass}>
               <FormattedMessage id="nav.showroom" />
             </a>
           </li>
-          <li>
-            <a href="">
+          <li >
+            <a href="/#partner" onClick={toggleClass}>
               <FormattedMessage id="nav.partner" />
             </a>
           </li>
-          <li>
-            <a href="">
+          <li >
+            <a href="/#contact" onClick={toggleClass}>
               <FormattedMessage id="nav.contact" />
             </a>
-            <select value={context.locale} onChange={context.selectLanguage}>
-              <option value="ru">Русский</option>
-              <option value="uz">O'zbek</option>
-              <option value="en">English</option>
+            
+          </li>
+          <li >
+          <select value={context.locale} onChange={context.selectLanguage}>
+              <option value="ru">Ру</option>
+              <option value="uz">O'z</option>
+              <option value="en">En</option>
             </select>
           </li>
-          <li>
+          <li onClick={toggleClass}>
             <div className="volume">
               <div className="upper" onClick={play}>
                 <img src={changeimg} alt="" />
@@ -91,16 +98,19 @@ function Navbar(props) {
                   style={{ display: "none" }}
                 />
               </div>
-              <input type="range" name="" id="" />
+              <input type="range" onChange={change} name="" id="" />
             </div>
           </li>
-          <li>
-            <button>
-              <img src="/img/nav/call.svg" alt="" />
+          <li onClick={toggleClass}>
+            <button style={{borderRadius: '.6vw'}}>
+              <img src="/img/nav/call.svg" alt="" style={{width: '1vw'}} />
               90 1312000
             </button>
           </li>
         </ul>
+        <div className="hamb" onClick={toggleClass}>
+          <span><img src="/img/home/hamb.svg" alt="toys" /></span>
+        </div>
       </nav>
     </div>
   );
