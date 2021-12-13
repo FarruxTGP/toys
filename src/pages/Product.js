@@ -16,31 +16,40 @@ function Product() {
     axiosGet();
   }, []);
   let context = useContext(Context)
+  const [isActive, setActive] = useState(false);
+
+  const toggleClass = () => {
+    setActive(!isActive);
+  };
   return (
     <Tabs>
       <div className="container products">
         <div className="tabs__grid">
           <h2>Категория</h2>
-          <h1>Машинки и модели</h1>
-          <TabList className="tabs">
+          
+          <h1><button  onClick={toggleClass}>Категория</button>Машинки и модели</h1>
+          <TabList className="tabs" className={isActive ? 'actab tabs': 'tabs'}>
             <Tab>
-              <button>Машинки и модели</button>
+              <button onClick={toggleClass}>Машинки и модели</button>
             </Tab>
             <Tab>
-              <button>Конструкторы</button>
+              <button  onClick={toggleClass}>Конструкторы</button>
             </Tab>
             <Tab>
-              <button>Игрушка для девчонок</button>
+              <button  onClick={toggleClass}>Игрушка для девчонок</button>
             </Tab>
             <Tab>
-              <button>Игрушка для уморазвития</button>
+              <button  onClick={toggleClass}>Игрушка для уморазвития</button>
             </Tab>
             <Tab>
-              <button>Качели для плашадок</button>
+              <button  onClick={toggleClass}>Качели для плашадок</button>
             </Tab>
             <Tab>
-              <button>Спортивные игрушки</button>
+              <button  onClick={toggleClass}>Спортивные игрушки</button>
             </Tab>
+            <div onClick={toggleClass} className="tab-closer">
+
+            </div>
           </TabList>
           <TabPanel>
             <div className="offers">
@@ -62,7 +71,7 @@ function Product() {
                           ? item.name_ru
                           : item.name_en}
                       </p>
-                      <span>25 000 uzs</span>
+                      <span>{item?.price} uzs</span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />
@@ -92,7 +101,7 @@ function Product() {
                           ? item.name_ru
                           : item.name_en}
                       </p>
-                      <span>25 000 uzs</span>
+                      <span>{item?.price} uzs</span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />
@@ -122,7 +131,7 @@ function Product() {
                           ? item.name_ru
                           : item.name_en}
                       </p>
-                      <span>25 000 uzs</span>
+                      <span>{item?.price} uzs</span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />
@@ -152,7 +161,7 @@ function Product() {
                           ? item.name_ru
                           : item.name_en}
                       </p>
-                      <span>25 000 uzs</span>
+                      <span>{item?.price} uzs</span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />
@@ -182,7 +191,7 @@ function Product() {
                           ? item.name_ru
                           : item.name_en}
                       </p>
-                      <span>25 000 uzs</span>
+                      <span>{item?.price} uzs</span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />
@@ -212,7 +221,7 @@ function Product() {
                           ? item.name_ru
                           : item.name_en}
                       </p>
-                      <span>25 000 uzs</span>
+                      <span>{item?.price} uzs</span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />

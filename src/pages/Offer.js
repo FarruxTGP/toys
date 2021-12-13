@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import Modal from "react-modal";
 import axios from "axios";
 import { Context } from "../components/Wrapper";
+import { useForm } from "react-hook-form";
 const modalStyle = {
   content: {
     top: "50%",
@@ -18,6 +19,47 @@ const modalStyle = {
   },
 };
 function Offer() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  
+  const onSubmit = (data) => {
+    let fixDate = {
+      price: offer?.price || 0,
+      name: data.name,
+      product_name: offer?.name_uz,
+      count: data.number
+    };
+    function buildFormData(formData, data, parentKey) {
+      if (data && typeof data === 'object' && !(data instanceof Date) && !(data instanceof File)) {
+        Object.keys(data).forEach(key => {
+          buildFormData(formData, data[key], parentKey ? `${parentKey}[${key}]` : key);
+        });
+      } else {
+        const value = data == null ? '' : data;
+    
+        formData.append(parentKey, value);
+      }
+    }
+    function jsonToFormData(data) {
+      const formData = new FormData();
+      
+      buildFormData(formData, data);
+      
+      return formData;
+    }
+    const headers = { 
+      'Accept': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded'
+    };
+    axios.post('https://toys-abba.techdatasoft.uz/api/v1/order',  jsonToFormData(fixDate) , { headers })
+        .then(response => console.clear() );
+        setIsOpen(false);
+  };
+
   const context = useContext(Context);
   let location = useParams();
   console.log(location);
@@ -150,9 +192,13 @@ function Offer() {
         style={modalStyle}
         contentLabel="Example Modal"
       >
-        <form>
-          <input type="text" placeholder="Ваш номер или e-mail" />
-          <input type="text" placeholder="Ваша имя" />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            type="text"
+            placeholder="Ваш номер или e-mail"
+            {...register("number")}
+          />
+          <input type="text" placeholder="Ваша имя" {...register("name")} />
           <button>Заказать</button>
         </form>
       </Modal>

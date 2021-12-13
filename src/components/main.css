@@ -2,6 +2,10 @@
   font-family: "Sans";
   src: url(../img/font.woff);
 }
+@font-face {
+  font-family: "Light";
+  src: url(../img/light.ttf);
+}
 * {
   margin: 0px;
   padding: 0px;
@@ -98,6 +102,7 @@ button {
   align-items: center;
   gap: 1vw;
   font-size: 1.3vw;
+  font-family: "Light";
 }
 
 button img {
@@ -453,6 +458,7 @@ html {
 }
 .txt__counter p {
   font-size: 0.8vw;
+  font-family: "Light";
 }
 .txt__counter h3 {
   font-size: 1vw;
@@ -666,7 +672,7 @@ nav li:nth-child(4)::before {
   row-gap: 2vw;
   justify-content: space-between;
 }
-.tabs__grid button {
+.tabs__grid .tabs button {
   width: 80%;
   color: #404040;
   background-color: transparent;
@@ -680,8 +686,22 @@ nav li:nth-child(4)::before {
 .tabs__grid h1,
 .tabs__grid h2 {
   color: #666666;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+.tabs__grid h1 button {
+  background: #edf9ff;
+  border-radius: 10vw;
+  color: #19b1f4;
+  padding: 4vw 8vw;
+  position: relative;
+  left: -10vw;
+  display: none;
+}
+
 .offer {
+  border: 1px solid transparent;
   position: relative;
   width: 100%;
   background: #f6f6f7;
@@ -690,9 +710,11 @@ nav li:nth-child(4)::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  grid-gap: 1vw;
   gap: 1vw;
+  height: 100%;
   animation: fadein 1s both;
+  justify-content: space-evenly;
 }
 .offers a {
   color: #666666;
@@ -710,10 +732,11 @@ nav li:nth-child(4)::before {
   gap: 1vw;
 }
 
-.offer img {
+.offer > img {
   width: 80%;
+  height: 13vw;
+  object-fit: contain;
 }
-
 .offer span {
   color: #ffa723;
   font-size: 0.9vw;
@@ -886,6 +909,7 @@ nav select option {
 .ReactModal__Content {
   border: 1px solid rgba(204, 204, 204, 0) !important;
   background: transparent !important;
+  padding: 10vw;
 }
 li button {
   font-size: 0.8vw;
@@ -924,10 +948,20 @@ li button {
 .footer {
   background-color: #f6f6f7;
 }
+.footer * {
+  font-family: "Light";
+}
+.partner .card img {
+  border-radius: 0 !important;
+}
 .carousel .thumb {
   height: 16vw;
   align-items: center;
   display: flex;
+}
+.carousel img {
+  height: 100%;
+  object-fit: contain;
 }
 @media (max-width: 852px) {
   .hamb {
@@ -962,6 +996,50 @@ li button {
 }
 
 @media (max-width: 630px) {
+  .tabs__grid h1 button {
+    display: block;
+  }
+  .carousel.carousel-slider,
+  .slide-holder {
+    height: 63vw !important;
+  }
+  .carousel {
+    width: 55% !important;
+  }
+  .offer__page {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .carousel .thumb {
+    width: 94% !important;
+    height: 30vw;
+  }
+  .carousel .slider-wrapper {
+    width: 75% !important;
+  }
+  .item__offer h1 {
+    font-size: 6.5vw;
+  }
+  .sp__around p,
+  .sp__around span {
+    font-size: 3vw;
+    line-height: 4.9vw;
+  }
+  .offer__slider {
+    display: none;
+  }
+  .offer__page .flex {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5vw;
+    order: -1;
+    width: 100%;
+  }
+  .sp__around {
+    gap: 7vw;
+  }
+  .offer__page button {
+    border-radius: 1vw;
+  }
   .slide__target .item__two {
     display: none;
   }
@@ -976,7 +1054,7 @@ li button {
     width: 72vw;
   }
   button {
-    font-size: 3.3vw;
+    font-size: 3.3vw !important;
     padding: 2vw 5vw;
     border-radius: 3vw;
   }
@@ -995,7 +1073,11 @@ li button {
     padding-bottom: 25vw;
   }
   button img {
-    width: 4.800000000000001vw;
+    width: 4.800000000000001vw !important;
+  }
+  nav select {
+    font-size: 4vw;
+    color: #ffa723;
   }
   .product__body .slick-track {
     display: flex;
@@ -1122,10 +1204,28 @@ li button {
     padding: 4vw;
     border-radius: 3vw;
     font-size: 5vw;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 9vw;
   }
   .dubl button img {
-    width: 12.8vw;
+    width: 12.8vw !important;
+  }
+  .about__page {
+    gap: 20vw;
+    grid-template-columns: 100%;
+  }
+  nav {
+    width: 88vw;
+  }
+ 
+  .about__page h1 {
+    font-size: 9vw;
+  }
+  .about__page p {
+    font-size: 4vw;
+    width: 100%;
+    line-height: 7.5vw;
+    text-align: justify;
   }
   .partner .slick-track {
     display: grid;
@@ -1147,14 +1247,24 @@ li button {
     display: none;
   }
   .contact h1 {
-    width: 57vw;
+    width: 100%;
     font-size: 5vw;
+  }
+  .contact {
+    padding: 7vw 10vw;
   }
   footer {
     flex-direction: column;
     background-color: #eef9ff;
     width: 100%;
-    padding: 0 5vw;
+    padding: 4vw 5vw;
+  }
+  .ReactModal__Content form {
+    width: 75vw;
+    gap: 4vw;
+  }
+  .ReactModal__Content form input {
+    padding: 3vw;
   }
   .download__cat button {
     top: -9vw;
@@ -1190,5 +1300,72 @@ li button {
   .export {
     margin: 0;
     margin-bottom: 7vw;
+  }
+  .tabs__grid h2 {
+    display: none;
+  }
+  .tabs__grid {
+    grid-template-columns: 100%;
+    gap: 10vw;
+  }
+  .tabs__grid h1 {
+    font-size: 5.4vw;
+  }
+  .tabs.actab {
+    left: 0;
+  }
+  .tabs {
+    height: 100vh;
+    grid-gap: 4vw;
+    gap: 4vw;
+    position: fixed;
+    background: #fff;
+    padding: 6vw;
+    transition: 0.5s;
+    top: 0;
+    left: -100vw;
+    box-shadow: 1vw 1vw 4vw rgb(0 0 0 / 10%);
+    z-index: 99;
+  }
+  .offers {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7vw;
+  }
+  .offer p {
+    font-size: 3.7vw;
+  }
+  .offer span {
+    font-size: 2.9vw;
+  }
+  .offer {
+    padding: 5vw;
+    border-radius: 4vw;
+  }
+  .offer > img {
+    width: 100%;
+    height: 41vw;
+    object-fit: cover;
+  }
+  .container {
+    width: 90vw;
+  }
+  .tabs__grid h1 button::after,
+  .tab-closer::after {
+    content: url(../img/modal.svg);
+    position: absolute;
+    width: 10vw;
+    right: -5vw;
+    top: 2.5vw;
+    height: 10vw;
+  }
+  .tab-closer::after {
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 460px) {
+  .tab-closer:after,
+  .tabs__grid h1 button:after {
+    top: 0.5vw;
   }
 }
