@@ -8,6 +8,9 @@ import Modal from "react-modal";
 import axios from "axios";
 import { Context } from "../components/Wrapper";
 import { useForm } from "react-hook-form";
+import ReactTooltip from "react-tooltip";
+import { FormattedMessage } from "react-intl";
+import Barcode from "react-barcode";
 const modalStyle = {
   content: {
     top: "50%",
@@ -25,44 +28,57 @@ function Offer() {
     watch,
     formState: { errors },
   } = useForm();
-  
+
   const onSubmit = (data) => {
     let fixDate = {
       price: offer?.price || 0,
       name: data.name,
       product_name: offer?.name_uz,
-      count: data.number
+      count: data.number,
     };
     function buildFormData(formData, data, parentKey) {
-      if (data && typeof data === 'object' && !(data instanceof Date) && !(data instanceof File)) {
-        Object.keys(data).forEach(key => {
-          buildFormData(formData, data[key], parentKey ? `${parentKey}[${key}]` : key);
+      if (
+        data &&
+        typeof data === "object" &&
+        !(data instanceof Date) &&
+        !(data instanceof File)
+      ) {
+        Object.keys(data).forEach((key) => {
+          buildFormData(
+            formData,
+            data[key],
+            parentKey ? `${parentKey}[${key}]` : key
+          );
         });
       } else {
-        const value = data == null ? '' : data;
-    
+        const value = data == null ? "" : data;
+
         formData.append(parentKey, value);
       }
     }
     function jsonToFormData(data) {
       const formData = new FormData();
-      
+
       buildFormData(formData, data);
-      
+
       return formData;
     }
-    const headers = { 
-      'Accept': 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded'
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
     };
-    axios.post('https://toys-abba.techdatasoft.uz/api/v1/order',  jsonToFormData(fixDate) , { headers })
-        .then(response => console.clear() );
-        setIsOpen(false);
+    axios
+      .post(
+        "https://api.therepublicoftoys.uz/api/v1/order",
+        jsonToFormData(fixDate),
+        { headers }
+      )
+      .then((response) => console.clear());
+    setIsOpen(false);
   };
 
   const context = useContext(Context);
   let location = useParams();
-  console.log(location);
   const settings2 = {
     infinite: true,
     speed: 500,
@@ -80,7 +96,7 @@ function Offer() {
   useEffect(() => {
     const axiosGet = async () => {
       const response = await axios.get(
-        "https://toys-abba.techdatasoft.uz/api/v1/offers"
+        "https://api.therepublicoftoys.uz/api/v1/offers"
       );
       setrest(response.data);
     };
@@ -90,19 +106,11 @@ function Offer() {
   const activeIds = [Number(id)];
   const result = rest.filter(({ id }) => activeIds.includes(id));
   const offer = result[0];
-  console.log(offer);
 
   return (
     <>
       <div className="container offer__page">
         <div className="item__offer">
-          <h1>
-            {context.locale === "uz"
-              ? offer?.name_uz
-              : context.locale === "ru"
-              ? offer?.name_ru
-              : offer?.name_en}
-          </h1>
           <Carousel
             showThumbs={true}
             showStatus={false}
@@ -114,25 +122,37 @@ function Offer() {
             <div className="slide-holder">
               <img
                 className={"img__one"}
-                src={"https://toys-abba.techdatasoft.uz/img/" + offer?.img?.[0]}
+                src={"https://api.therepublicoftoys.uz/img/" + offer?.img?.[0]}
               />
             </div>
             <div className="slide-holder">
               <img
                 className={"img__one"}
-                src={"https://toys-abba.techdatasoft.uz/img/" + offer?.img?.[1]}
+                src={"https://api.therepublicoftoys.uz/img/" + offer?.img?.[1]}
               />
             </div>
             <div className="slide-holder">
               <img
                 className={"img__one"}
-                src={"https://toys-abba.techdatasoft.uz/img/" + offer?.img?.[2]}
+                src={"https://api.therepublicoftoys.uz/img/" + offer?.img?.[2]}
               />
             </div>
           </Carousel>
         </div>
         <div className="item__offer sp__around">
-          <button className="blue">Характеристики</button>
+          <h1>
+            {/* {context.locale === "uz"
+              ? offer?.name_uz
+              : context.locale === "ru"
+              ? offer?.name_ru
+              : offer?.name_en} */}
+            {context.locale === "uz"
+              ? offer?.title_uz
+              : context.locale === "ru"
+              ? offer?.title_ru
+              : offer?.title_en}
+          </h1>
+          {/*<button className="blue">Характеристики</button>
           <p>
             {context.locale === "uz"
               ? offer?.title_uz
@@ -156,7 +176,187 @@ function Offer() {
               <span>{offer?.price} uzs</span>
             </div>
             <button onClick={openModal}>Заказать</button>
-          </div>
+          </div> */}
+          <table className="table table-striped">
+            <tbody>
+              <tr>
+                <td className="color-grey">
+                  <FormattedMessage id="prod.1" />
+                  <img
+                    data-tip="test"
+                    data-for="test"
+                    src="https://www.polesie-toys.com/static/img/icons/question.svg"
+                    alt="ques"
+                  />
+                  <ReactTooltip id="test">
+                    {" "}
+                    <FormattedMessage id="prod.1" />
+                  </ReactTooltip>
+                </td>
+                <td>{offer?.articul}</td>
+              </tr>
+              <tr>
+                <td className="color-grey">
+                  <FormattedMessage id="prod.2" />
+                  <img
+                    data-tip="test1"
+                    data-for="test1"
+                    src="https://www.polesie-toys.com/static/img/icons/question.svg"
+                    alt="ques"
+                  />
+                  <ReactTooltip id="test1">
+                    {" "}
+                    <FormattedMessage id="prod.2" />
+                  </ReactTooltip>
+                </td>
+                <td style={{ padding: "0px" }}>
+                  <Barcode
+                    height="20"
+                    width="1"
+                    fontSize="10px"
+                    value={offer?.qr}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="color-grey">
+                  <FormattedMessage id="prod.3" />
+                  <img
+                    data-tip="test2"
+                    data-for="test2"
+                    src="https://www.polesie-toys.com/static/img/icons/question.svg"
+                    alt="ques"
+                  />
+                  <ReactTooltip id="test2">
+                    {" "}
+                    <FormattedMessage id="prod.3" />
+                  </ReactTooltip>
+                </td>
+                <td>{offer?.size_toy}</td>
+              </tr>
+              <tr>
+                <td className="color-grey">
+                  <FormattedMessage id="prod.4" />{" "}
+                  <img
+                    data-tip="test3"
+                    data-for="test3"
+                    src="https://www.polesie-toys.com/static/img/icons/question.svg"
+                    alt="ques"
+                  />
+                  <ReactTooltip id="test3">
+                    {" "}
+                    <FormattedMessage id="prod.4" />
+                  </ReactTooltip>
+                </td>
+                <td>
+                  {context.locale === "uz"
+                    ? offer?.case_uz
+                    : context.locale === "ru"
+                    ? offer?.case_ru
+                    : offer?.case_en}{" "}
+                </td>
+              </tr>
+              <tr>
+                <td className="color-grey">
+                  <FormattedMessage id="prod.5" />{" "}
+                  <img
+                    data-tip="test4"
+                    data-for="test4"
+                    src="https://www.polesie-toys.com/static/img/icons/question.svg"
+                    alt="ques"
+                  />
+                  <ReactTooltip id="test4">
+                    {" "}
+                    <FormattedMessage id="prod.5" />
+                  </ReactTooltip>
+                </td>
+                <td>{offer?.size_case}</td>
+              </tr>
+              <tr>
+                <td className="color-grey">
+                  <FormattedMessage id="prod.6" />{" "}
+                  <img
+                    data-tip="test6"
+                    data-for="test6"
+                    src="https://www.polesie-toys.com/static/img/icons/question.svg"
+                    alt="ques"
+                  />
+                  <ReactTooltip id="test6">
+                    {" "}
+                    <FormattedMessage id="prod.6" />
+                  </ReactTooltip>
+                </td>
+                <td>
+                  {context.locale === "uz"
+                    ? offer?.casegroup_uz
+                    : context.locale === "ru"
+                    ? offer?.casegroup_ru
+                    : offer?.casegroup_en}{" "}
+                </td>
+              </tr>
+              <tr>
+                <td className="color-grey">
+                  <FormattedMessage id="prod.7" />{" "}
+                  <img
+                    data-tip="test7"
+                    data-for="test7"
+                    src="https://www.polesie-toys.com/static/img/icons/question.svg"
+                    alt="ques"
+                  />
+                  <ReactTooltip id="test7">
+                    {" "}
+                    <FormattedMessage id="prod.7" />
+                  </ReactTooltip>
+                </td>
+                <td>{offer?.weight}</td>
+              </tr>
+              <tr>
+                <td className="color-grey">
+                  <FormattedMessage id="prod.8" />
+                  <img
+                    data-tip="test8"
+                    data-for="test8"
+                    src="https://www.polesie-toys.com/static/img/icons/question.svg"
+                    alt="ques"
+                  />
+                  <ReactTooltip id="test8">
+                    {" "}
+                    <FormattedMessage id="prod.8" />
+                  </ReactTooltip>
+                </td>
+                <td>{offer?.count}  {context.locale === "uz"
+                          ? 'ta'
+                          : context.locale === "ru"
+                          ? 'шт'
+                          : ''}</td>
+              </tr>
+              <tr>
+                <td className="color-grey">
+                  {" "}
+                  <FormattedMessage id="prod.9" />
+                </td>
+                <td>
+                  {offer?.file ? (
+                    <a
+                      className="btn btn-primary"
+                      href={"https://api.therepublicoftoys.uz/" + offer?.file}
+                      download
+                      target="_blank"
+                    >
+                      <FormattedMessage id="prod.10" />
+                    </a>
+                  ) : (
+                    <a
+                      className="btn btn-primary"
+                      aria-disabled
+                    >
+                      <FormattedMessage id="prod.10" />
+                    </a>
+                  )}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <div className="container offer__slider">
@@ -165,20 +365,22 @@ function Offer() {
             <a href={"/product/" + item.id}>
               <div className="offer">
                 <img
-                  src={"https://toys-abba.techdatasoft.uz/img/" + item.img[0]}
+                  src={"https://api.therepublicoftoys.uz/img/" + item.img[0]}
                   alt=""
                 />
                 <p>
                   {" "}
                   {context.locale === "uz"
-                    ? offer?.name_uz
+                    ? item?.title_uz
                     : context.locale === "ru"
-                    ? offer?.name_ru
-                    : offer?.name_en}
+                    ? item?.title_ru
+                    : item?.title_en}
                 </p>
-                <span>25 000 uzs</span>
+                <span>{item?.price} uzs</span>
                 <div className="hover__offer">
-                  <span>Подробнее</span>
+                  <span>
+                    <FormattedMessage id="home.more" />
+                  </span>
                   <img src={"/img/home/cardar.svg"} alt="" />
                 </div>
               </div>

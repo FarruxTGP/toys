@@ -1,19 +1,68 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Slider from "react-slick";
 import AOS from "aos";
 import { FormattedMessage } from "react-intl";
-
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { Context } from "../components/Wrapper";
 function Home() {
+  function clr() {
+    document.querySelectorAll(".clear").forEach((item) => item.value = "");
+  }
+  let brow;
+  if (
+    (navigator.userAgent.indexOf("Opera") ||
+      navigator.userAgent.indexOf("OPR")) != -1
+  ) {
+    brow = "Opera";
+  } else if (navigator.userAgent.indexOf("Chrome") != -1) {
+    brow = "Chrome";
+  } else if (navigator.userAgent.indexOf("Safari") != -1) {
+    brow = "Safari";
+  } else if (navigator.userAgent.indexOf("Firefox") != -1) {
+    brow = "Firefox";
+  } else if (
+    navigator.userAgent.indexOf("MSIE") != -1 ||
+    !!document.documentMode == true
+  ) {
+    brow = "IE"; //crap
+  } else {
+    brow = "Unknown";
+  }
   useEffect(() => {
     AOS.init({
-      offset: 400,
+      // offset: 400,
       duration: 700,
       easing: "ease-in-sine",
       delay: 100,
+      disable: function () {
+        var maxWidth = 800;
+        return window.innerWidth < maxWidth;
+      },
     });
     AOS.refresh();
+  }, []);
+  const [Statisic, setStatisic] = React.useState([]);
+  const [Partner, setPartner] = React.useState([]);
+  useEffect(() => {
+    const axiosGet = async () => {
+      const response = await axios.get(
+        "https://api.therepublicoftoys.uz/api/v1/statistic"
+      );
+      setStatisic(response?.data?.data[0]);
+    };
+    axiosGet();
+  }, []);
+  useEffect(() => {
+    const axiosGet = async () => {
+      const partner = await axios.get(
+        "https://api.therepublicoftoys.uz/api/v1/partner"
+      );
+      setPartner(partner?.data?.data);
+    };
+    axiosGet();
   }, []);
   const settings = {
     infinite: true,
@@ -31,9 +80,9 @@ function Home() {
         breakpoint: 1024,
         settings: {
           slidesToShow: 6,
-        }
+        },
       },
-    ]
+    ],
   };
   const settings3 = {
     infinite: true,
@@ -44,13 +93,72 @@ function Home() {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 5,
-        }
+          slidesToShow: 3,
+        },
       },
-    ]
+    ],
   };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    window.scrollTo(0, 0);
+    let fixDate = {
+      // price: 0,
+      name: data.name,
+      product_name: data.comment,
+      price: data.number,
+    };
+    function buildFormData(formData, data, parentKey) {
+      if (
+        data &&
+        typeof data === "object" &&
+        !(data instanceof Date) &&
+        !(data instanceof File)
+      ) {
+        Object.keys(data).forEach((key) => {
+          buildFormData(
+            formData,
+            data[key],
+            parentKey ? `${parentKey}[${key}]` : key
+          );
+        });
+      } else {
+        const value = data == null ? "" : data;
+
+        formData.append(parentKey, value);
+      }
+    }
+    function jsonToFormData(data) {
+      const formData = new FormData();
+
+      buildFormData(formData, data);
+
+      return formData;
+    }
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
+    axios
+      .post(
+        "https://api.therepublicoftoys.uz/api/v1/order",
+        jsonToFormData(fixDate),
+        { headers }
+      )
+      .then((response) => clr());
+  };
+
+  const [Showroom, setShowroom] = useState("");
+  const [Fabric, setFabric] = useState("");
+  let context = useContext(Context);
   return (
-    <div>
+    <div className="home">
+      {console.log("-----------------------------------", context.locale)}
       <div>
         <div className="slide__menu">
           <Slider {...settings}>
@@ -63,10 +171,12 @@ function Home() {
                   <p>
                     <FormattedMessage id="home.slidetxt" />{" "}
                   </p>
-                  <button>
-                    <FormattedMessage id="home.more" />{" "}
-                    <img src="./img/home/btnarrow.svg" alt="toys" />
-                  </button>
+                  <Link to="/product" style={{ padding: "0" }}>
+                    <button>
+                      <FormattedMessage id="home.more" />{" "}
+                      <img src="./img/home/btnarrow.svg" alt="toys" />
+                    </button>
+                  </Link>
                 </div>
                 <div className="item__two">
                   <img
@@ -86,10 +196,12 @@ function Home() {
                   <p>
                     <FormattedMessage id="home.slidetxt" />{" "}
                   </p>
-                  <button>
-                    <FormattedMessage id="home.more" />{" "}
-                    <img src="./img/home/btnarrow.svg" alt="toys" />
-                  </button>
+                  <Link to="/product" style={{ padding: "0" }}>
+                    <button>
+                      <FormattedMessage id="home.more" />{" "}
+                      <img src="./img/home/btnarrow.svg" alt="toys" />
+                    </button>
+                  </Link>
                 </div>
                 <div className="item__two">
                   <img
@@ -126,7 +238,12 @@ function Home() {
               <Slider {...settings2}>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <Link to="product">
+                    <Link
+                      to="product"
+                      onClick={() => {
+                        localStorage.setItem("activetoy", 3);
+                      }}
+                    >
                       <img src="./img/home/ayiqcha.png" alt="toys" />
                     </Link>
                     <p>
@@ -136,7 +253,12 @@ function Home() {
                 </div>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <Link to="product">
+                    <Link
+                      to="product"
+                      onClick={() => {
+                        localStorage.setItem("activetoy", 0);
+                      }}
+                    >
                       <img src="./img/home/kamazcard.png" alt="toys" />
                     </Link>
                     <p>
@@ -146,7 +268,12 @@ function Home() {
                 </div>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <Link to="product">
+                    <Link
+                      to="product"
+                      onClick={() => {
+                        localStorage.setItem("activetoy", 1);
+                      }}
+                    >
                       <img src="./img/home/shtuk.png" alt="toys" />
                     </Link>
                     <p>
@@ -156,7 +283,12 @@ function Home() {
                 </div>
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <Link to="product">
+                    <Link
+                      to="product"
+                      onClick={() => {
+                        localStorage.setItem("activetoy", 2);
+                      }}
+                    >
                       <img src="./img/home/kazan.png" alt="toys" />
                     </Link>
                     <p>
@@ -167,18 +299,28 @@ function Home() {
 
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <Link to="product">
+                    <Link
+                      to="product"
+                      onClick={() => {
+                        localStorage.setItem("activetoy", 5);
+                      }}
+                    >
                       <img src="./img/home/skill.png" alt="toys" />
                     </Link>
                     <p>
-                      <FormattedMessage id="cotg.2" />
+                      <FormattedMessage id="cotg.6" />
                     </p>
                   </div>
                 </div>
 
                 <div className={"card__slide"}>
                   <div className="card" data-aos="flip-left">
-                    <Link to="product">
+                    <Link
+                      to="product"
+                      onClick={() => {
+                        localStorage.setItem("activetoy", 4);
+                      }}
+                    >
                       <img src="./img/home/umer.png" alt="toys" />
                     </Link>
                     <p>
@@ -193,7 +335,15 @@ function Home() {
         <div className="dino" data-aos="fade-up">
           <div className="container">
             <img data-aos="flip-right" src="./img/home/dino.png" alt="" />
-            <div className="dino__txt" data-aos="flip-left">
+            <div
+              className="dino__txt"
+              style={
+                brow === "Safari"
+                  ? { marginLeft: "0px" }
+                  : { position: "relative", left: "-55px" }
+              }
+              data-aos="flip-left"
+            >
               <div className="title">
                 <span>
                   <FormattedMessage id="nav.about" />
@@ -207,10 +357,12 @@ function Home() {
                 <p>
                   <FormattedMessage id="home.abouttxt" />
                 </p>
-                <button>
-                  <FormattedMessage id="home.more" />{" "}
-                  <img src="./img/home/cardar.svg" alt="toys" />
-                </button>
+                <Link to="/about">
+                  <button>
+                    <FormattedMessage id="home.more" />{" "}
+                    <img src="./img/home/cardar.svg" alt="toys" />
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -228,40 +380,37 @@ function Home() {
           <div className="container">
             <div className="counter__cards">
               <div className="c__card" data-aos="flip-left">
-                <h1>200</h1>
+                <h1>{Statisic.info1}+</h1>
                 <p>
                   {" "}
-                  <FormattedMessage id="home.numberof" />
-                </p>
-              </div>
-              <div className="c__card" data-aos="flip-left">
-                <h1>200</h1>
-                <p>
                   <FormattedMessage id="home.numberof2" />
                 </p>
               </div>
               <div className="c__card" data-aos="flip-left">
-                <h1>200</h1>
+                <h1>
+                  {Statisic.info2} <FormattedMessage id="home.let" />
+                </h1>
                 <p>
                   <FormattedMessage id="home.numberof3" />
                 </p>
               </div>
               <div className="c__card" data-aos="flip-left">
-                <h1>200</h1>
+                <h1>{Statisic.info3}+</h1>
+                <p>
+                  <FormattedMessage id="home.numberof" />
+                </p>
+              </div>
+              <div className="c__card" data-aos="flip-left">
+                <h1>{Statisic.info4}+</h1>
                 <p>
                   <FormattedMessage id="home.numberof4" />
                 </p>
               </div>
             </div>
             <div className="txt__counter">
-              <h3>Lorem ipsum dolor sit </h3>
+              {/* <h3>Lorem ipsum dolor sit </h3> */}
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                aliquam, purus sit amet luctus venenatis, lectus magnafringilla
-                urna, porttitor rhoncus dolor purus non enim praesent elementum
-                facilisis leo, vel fringilla est Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit ut aliquam, purus sit amet luctus
-                venenatis, lectus magna fringilla urna, porttitor.{" "}
+                <FormattedMessage id="home.lorem" />
               </p>
             </div>
           </div>
@@ -306,23 +455,23 @@ function Home() {
             <div className="column" style={{ textAlign: "left" }}>
               <p data-aos="zoom-out" style={{ right: "3vw" }}>
                 {" "}
-                <FormattedMessage id="home.info7" />
+                <FormattedMessage id="home.info12" />
               </p>
               <p data-aos="zoom-out">
-                <FormattedMessage id="home.info8" />
+                <FormattedMessage id="home.info11" />
               </p>
               <p data-aos="zoom-out" style={{ top: "1vw", left: "1vw" }}>
-                <FormattedMessage id="home.info9" />
-              </p>
-              <p data-aos="zoom-out" style={{ top: "3vw", left: "0vw" }}>
                 <FormattedMessage id="home.info10" />
               </p>
+              <p data-aos="zoom-out" style={{ top: "3vw", left: "0vw" }}>
+                <FormattedMessage id="home.info9" />
+              </p>
               <p data-aos="zoom-out" style={{ top: "3vw", left: "-3vw" }}>
-                <FormattedMessage id="home.info11" />
+                <FormattedMessage id="home.info8" />
               </p>
               <p data-aos="zoom-out" style={{ top: "2vw", left: "-9vw" }}>
                 {" "}
-                <FormattedMessage id="home.info12" />
+                <FormattedMessage id="home.info7" />
               </p>
             </div>
           </div>
@@ -340,15 +489,10 @@ function Home() {
           <div className="container" data-aos="zoom-in-down">
             <div className="txt__export">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                aliquam, purus sit amet luctus venenatis, lectus magnafringilla
-                urna, porttitor rhoncus dolor purus non enim praesent elementum
-                facilisis leo, vel fringilla est Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit ut aliquam, purus sit amet luctus
-                venenatis, lectus magna fringilla urna, porttitor.{" "}
+                <FormattedMessage id="home.lorem2" />
               </p>
             </div>
-            <img src="./img/home/map.png" alt="map toys" />
+            <img src="./img/home/map.svg" alt="map toys" />
           </div>
         </div>
         <div id="showroom">
@@ -366,104 +510,267 @@ function Home() {
               <div className="dubl">
                 <div className="item" data-aos="flip-left">
                   <img src="./img/home/farm1.png" alt="toys uzb" />
-                  <button>
+                  {/* <a href="https://therepublicoftoys.uz/showroom/showroom1/ToyFactory/"> */}
+                  <button
+                    onClick={() => {
+                      setShowroom("active");
+                    }}
+                  >
                     <img src="./img/home/360.svg" alt="toys" />
                     <FormattedMessage id="home.gradusbtn" />
                   </button>
+                  {/* </a> */}
                 </div>
                 <div className="item" data-aos="flip-left">
                   <img src="./img/home/farm2.png" alt="toys uzb" />
-                  <button>
+                  {/* <a
+                    href="https://therepublicoftoys.uz/showroom/showroom2/ToyShowRoom/"
+                    rel="noopener noreferrer"
+                  > */}
+                  <button
+                    onClick={() => {
+                      setFabric("active");
+                    }}
+                  >
                     <img src="./img/home/360.svg" alt="toys" />
                     <FormattedMessage id="home.gradusbtn2" />
                   </button>
+                  {/* </a> */}
                 </div>
               </div>
               <div id="partner">
-              <div className="product partner">
-                <div className="title">
-                  <span>
-                    {" "}
-                    <FormattedMessage id="home.prtitle" />
-                  </span>
-                  <h1>
-                    <FormattedMessage id="nav.partner" />
-                  </h1>
-                  <hr />
+                <div className="product partner">
+                  <div className="title">
+                    <span>
+                      {" "}
+                      <FormattedMessage id="home.prtitle" />
+                    </span>
+                    <h1>
+                      <FormattedMessage id="nav.partner" />
+                    </h1>
+                    <hr />
+                  </div>
+                  <div className="product__body">
+                    <Slider {...settings3}>
+                      {Partner.map((item) => (
+                        <div className={"card__slide"}>
+                          <div className="card" data-aos="flip-left">
+                            <img
+                              src={
+                                "https://api.therepublicoftoys.uz/" + item.img
+                              }
+                              alt="toys"
+                            />
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* <div className={"card__slide"}>
+                        <div className="card" data-aos="flip-left">
+                          <img
+                            src="./img/home/new.svg"
+                            style={{ height: "13vw" }}
+                            alt="toys"
+                            className="h-21"
+                          />
+                        </div>
+                      </div>
+                      <div className={"card__slide"}>
+                        <div className="card" data-aos="flip-left">
+                          <img src="./img/home/jiraf.svg" alt="toys" />
+                        </div>
+                      </div>
+
+                      <div className={"card__slide"}>
+                        <div className="card" data-aos="flip-left">
+                          <img
+                            src="./img/home/shag.svg"
+                            style={{ height: "13vw" }}
+                            alt="toys"
+                            className="h-21 d-none"
+                          />
+                        </div>
+                      </div> */}
+                    </Slider>
+                  </div>
                 </div>
-                <div className="product__body">
-                  <Slider {...settings3}>
-                    <div className={"card__slide"}>
-                      <div className="card" data-aos="flip-left">
-                        <img src="./img/home/erkatoy.svg" alt="toys" />
-                      </div>
-                    </div>
-                    <div className={"card__slide"}>
-                      <div className="card" data-aos="flip-left">
-                        <img
-                          src="./img/home/shag.svg"
-                          style={{ height: "13vw" }}
-                          alt="toys"
-                          className="h-21"
-                        />
-                      </div>
-                    </div>
-                    <div className={"card__slide"}>
-                      <div className="card" data-aos="flip-left">
-                        <img
-                          src="./img/home/new.svg"
-                          style={{ height: "13vw" }}
-                          alt="toys"
-                          className="h-21"
-
-                        />
-                      </div>
-                    </div>
-                    <div className={"card__slide"}>
-                      <div className="card" data-aos="flip-left">
-                        <img src="./img/home/jiraf.svg" alt="toys" />
-                      </div>
-                    </div>
-
-                    <div className={"card__slide"}>
-                      <div className="card" data-aos="flip-left">
-                        <img
-                          src="./img/home/shag.svg"
-                          style={{ height: "13vw" }}
-                          alt="toys"
-                          className="h-21 d-none"
-
-                        />
-                      </div>
-                    </div>
-                  </Slider>
-                </div>
-              </div>
               </div>
             </div>
           </div>
         </div>
 
         <div className="contact" id="contact">
-          <form>
-            <h1>
-              <FormattedMessage id="home.form" />
-            </h1>
-            <div className="row">
-              <input type="text" placeholder="Ваш номер" />
-              <input type="text" placeholder="Ваша имя" />
-            </div>
-            <textarea
-              name=""
-              placeholder="Сообщения"
-              id=""
-              cols="30"
-              rows="10"
-            ></textarea>
-            <button>Отправить</button>
-          </form>
+          {context.locale === "ru" ? (
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <h1>
+                <FormattedMessage id="home.form" />
+              </h1>
+              <div className="row">
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  {...register("number")}
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="Ваша имя"
+                  {...register("name")}
+                  className="clear"
+                />
+              </div>
+              <textarea
+                name=""
+                placeholder="Сообщения"
+                id=""
+                cols="30"
+                className="clear"
+                rows="10"
+                {...register("comment")}
+              ></textarea>
+              <button
+               
+              >
+                Отправить
+              </button>
+            </form>
+          ) : context.locale === "en" ? (
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <h1>
+                <FormattedMessage id="home.form" />
+              </h1>
+              <div className="row">
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  className="clear"
+                  {...register("number")}
+                  required
+                />
+                <input
+                  clas
+                  type="text"
+                  placeholder="Name"
+                  className="clear"
+                  {...register("name")}
+                  className="clear"
+                />
+              </div>
+              <textarea
+                name=""
+                placeholder="Message"
+                id=""
+                cols="30"
+                className="clear"
+                rows="10"
+                {...register("comment")}
+              ></textarea>
+              <button
+               
+              >
+                Send
+              </button>
+            </form>
+          ) : context.locale === "uz" ? (
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <h1>
+                <FormattedMessage id="home.form" />
+              </h1>
+              <div className="row">
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  {...register("number")}
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="Ismingiz"
+                  {...register("name")}
+                  className="clear"
+                />
+                clas{" "}
+              </div>
+              <textarea
+                name=""
+                placeholder="Izoh"
+                id=""
+                cols="30"
+                className="clear"
+                rows="10"
+                {...register("comment")}
+              ></textarea>
+              <button
+               
+              >
+                Yuborish
+              </button>
+            </form>
+          ) : (
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <h1>
+                <FormattedMessage id="home.form" />
+              </h1>
+              <div className="row">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="clear"
+                  {...register("number")}
+                  
+                />
+                <input
+                  type="text"
+                  placeholder="Ваша имя"
+                  {...register("name")}
+                  className="clear"
+                />
+              </div>
+              <textarea
+                name=""
+                placeholder="Сообщения"
+                id=""
+                cols="30"
+                className="clear"
+                rows="10"
+                {...register("comment")}
+              ></textarea>
+              <button
+               
+              >
+                Отправить
+              </button>
+            </form>
+          )}
         </div>
       </div>
+      <div className="modal__room" id={Showroom}>
+        <button
+          onClick={() => {
+            setShowroom("0");
+          }}
+        >
+          <span>&times;</span>
+        </button>
+        <embed
+          type="text/html"
+          src="https://therepublicoftoys.uz/showroom/showroom1/ToyShowRoom/index.htm"
+        ></embed>
+      </div>
+      <div className="modal__room" id={Fabric}>
+        <button
+          onClick={() => {
+            setFabric("0");
+          }}
+        >
+          <span>&times;</span>
+        </button>
+        <embed
+          type="text/html"
+          src="https://therepublicoftoys.uz/showroom/showroom2/ToyFactory/index.htm"
+        ></embed>
+      </div>
+      {console.clear()}
     </div>
   );
 }

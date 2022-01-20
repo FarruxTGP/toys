@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import "react-tabs/style/react-tabs.css";
 import axios from "axios";
 import { Context } from "../components/Wrapper";
+import { FormattedMessage } from "react-intl";
 function Product() {
   const [rest, setrest] = useState([]);
   useEffect(() => {
     const axiosGet = async () => {
       const response = await axios.get(
-        "https://toys-abba.techdatasoft.uz/api/v1/offers"
+        "https://api.therepublicoftoys.uz/api/v1/offers"
       );
       setrest(response.data);
     };
@@ -22,30 +23,48 @@ function Product() {
     setActive(!isActive);
   };
   return (
-    <Tabs>
+    <Tabs defaultIndex={localStorage.getItem('activetoy')}>
       <div className="container products">
         <div className="tabs__grid">
-          <h2>Категория</h2>
+          <h2><FormattedMessage id="home.cotegory" /></h2>
           
-          <h1><button  onClick={toggleClass}>Категория</button>Машинки и модели</h1>
+          <h1><button  onClick={toggleClass}><FormattedMessage id="home.cotegory" /></button><FormattedMessage id="nav.products" /></h1>
           <TabList className="tabs" className={isActive ? 'actab tabs': 'tabs'}>
             <Tab>
-              <button onClick={toggleClass}>Машинки и модели</button>
+              <button onClick={()=>{
+                toggleClass()
+                localStorage.setItem('activetoy', 0)
+                }}><FormattedMessage id="cotg.1" /></button>
             </Tab>
             <Tab>
-              <button  onClick={toggleClass}>Конструкторы</button>
+              <button   onClick={()=>{
+                toggleClass()
+                localStorage.setItem('activetoy', 1)
+                }}><FormattedMessage id="cotg.2" /></button>
             </Tab>
             <Tab>
-              <button  onClick={toggleClass}>Игрушка для девчонок</button>
+              <button  onClick={()=>{
+                toggleClass()
+                localStorage.setItem('activetoy', 2)
+              }}><FormattedMessage id="cotg.3" /></button>
             </Tab>
             <Tab>
-              <button  onClick={toggleClass}>Игрушка для уморазвития</button>
+              <button  onClick={()=>{
+                toggleClass()
+                localStorage.setItem('activetoy', 3)
+              }}><FormattedMessage id="cotg.4" /></button>
             </Tab>
             <Tab>
-              <button  onClick={toggleClass}>Качели для плашадок</button>
+              <button  onClick={()=>{
+                toggleClass()
+                localStorage.setItem('activetoy', 4)
+              }}><FormattedMessage id="cotg.5" /></button>
             </Tab>
             <Tab>
-              <button  onClick={toggleClass}>Спортивные игрушки</button>
+              <button  onClick={()=>{
+                toggleClass()
+                localStorage.setItem('activetoy', 5)
+              }}><FormattedMessage id="cotg.6" /></button>
             </Tab>
             <div onClick={toggleClass} className="tab-closer">
 
@@ -60,16 +79,16 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://toys-abba.techdatasoft.uz/img/" + item.img[0]
+                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
                         }
                         alt=""
                       />
                       <p>
                         {context.locale === "uz"
-                          ? item.name_uz
+                          ? item.title_uz
                           : context.locale === "ru"
-                          ? item.name_ru
-                          : item.name_en}
+                          ? item.title_ru
+                          : item.title_en}
                       </p>
                       <span>{item?.price} uzs</span>
                       <div className="hover__offer">
@@ -90,16 +109,16 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://toys-abba.techdatasoft.uz/img/" + item.img[0]
+                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
                         }
                         alt=""
                       />
                       <p>
                         {context.locale === "uz"
-                          ? item.name_uz
+                          ? item.title_uz
                           : context.locale === "ru"
-                          ? item.name_ru
-                          : item.name_en}
+                          ? item.title_ru
+                          : item.title_en}
                       </p>
                       <span>{item?.price} uzs</span>
                       <div className="hover__offer">
@@ -120,16 +139,16 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://toys-abba.techdatasoft.uz/img/" + item.img[0]
+                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
                         }
                         alt=""
                       />
                       <p>
                         {context.locale === "uz"
-                          ? item.name_uz
+                          ? item.title_uz
                           : context.locale === "ru"
-                          ? item.name_ru
-                          : item.name_en}
+                          ? item.title_ru
+                          : item.title_en}
                       </p>
                       <span>{item?.price} uzs</span>
                       <div className="hover__offer">
@@ -150,16 +169,16 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://toys-abba.techdatasoft.uz/img/" + item.img[0]
+                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
                         }
                         alt=""
                       />
                       <p>
                         {context.locale === "uz"
-                          ? item.name_uz
+                          ? item.title_uz
                           : context.locale === "ru"
-                          ? item.name_ru
-                          : item.name_en}
+                          ? item.title_ru
+                          : item.title_en}
                       </p>
                       <span>{item?.price} uzs</span>
                       <div className="hover__offer">
@@ -180,16 +199,16 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://toys-abba.techdatasoft.uz/img/" + item.img[0]
+                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
                         }
                         alt=""
                       />
                       <p>
                         {context.locale === "uz"
-                          ? item.name_uz
+                          ? item.title_uz
                           : context.locale === "ru"
-                          ? item.name_ru
-                          : item.name_en}
+                          ? item.title_ru
+                          : item.title_en}
                       </p>
                       <span>{item?.price} uzs</span>
                       <div className="hover__offer">
@@ -210,16 +229,16 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://toys-abba.techdatasoft.uz/img/" + item.img[0]
+                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
                         }
                         alt=""
                       />
                       <p>
                         {context.locale === "uz"
-                          ? item.name_uz
+                          ? item.title_uz
                           : context.locale === "ru"
-                          ? item.name_ru
-                          : item.name_en}
+                          ? item.title_ru
+                          : item.title_en}
                       </p>
                       <span>{item?.price} uzs</span>
                       <div className="hover__offer">

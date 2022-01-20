@@ -15,7 +15,7 @@ if (local === 'en') {
     if (local === 'uz') {
         lang = Uzbek;
     } else {
-        lang = Russian;
+        lang = English;
     }
 }
 
@@ -27,7 +27,6 @@ const Wrapper = (props) => {
     function selectLanguage(e) {
         const newLocale = e.target.value;
         setLocale(newLocale);
-        console.log('===================================', locale);
         if (newLocale === 'en') {
             setMessages(English);
         } else {

@@ -6820,6 +6820,11 @@ js-yaml@^3.13.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+jsbarcode@^3.8.0:
+  version "3.11.5"
+  resolved "https://registry.yarnpkg.com/jsbarcode/-/jsbarcode-3.11.5.tgz#390b3efd0271f35b9d68c7b8af6e972445969014"
+  integrity sha512-zv3KsH51zD00I/LrFzFSM6dst7rDn0vIMzaiZFL7qusTjPZiPtxg3zxetp0RR7obmjTw4f6NyGgbdkBCgZUIrA==
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
@@ -9195,6 +9200,14 @@ react-audio-player@^0.17.0:
   dependencies:
     prop-types "^15.7.2"
 
+react-barcode@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-barcode/-/react-barcode-1.4.1.tgz#516bdd97c09ece44b631c0790260e0cd2c6bc977"
+  integrity sha512-jzTPdGuAWpoya3i+e6YK60df8aA+NtYpzGf/xPxNpSL41oqqAS6v+QYW0N4CTeIFNo8ODX3siAnMY0rmL/UPgA==
+  dependencies:
+    jsbarcode "^3.8.0"
+    prop-types "^15.6.2"
+
 react-dev-utils@^11.0.3:
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"
@@ -9419,6 +9432,14 @@ react-tabs@^3.2.3:
   dependencies:
     clsx "^1.1.0"
     prop-types "^15.5.0"
+
+react-tooltip@^4.2.21:
+  version "4.2.21"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.21.tgz#840123ed86cf33d50ddde8ec8813b2960bfded7f"
+  integrity sha512-zSLprMymBDowknr0KVDiJ05IjZn9mQhhg4PRsqln0OZtURAJ1snt1xi5daZfagsh6vfsziZrc9pErPTDY1ACig==
+  dependencies:
+    prop-types "^15.7.2"
+    uuid "^7.0.3"
 
 react@^17.0.2:
   version "17.0.2"
@@ -11232,6 +11253,11 @@ uuid@^3.3.2, uuid@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
+
+uuid@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
+  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 uuid@^8.3.0:
   version "8.3.2"
