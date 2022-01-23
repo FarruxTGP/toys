@@ -7,9 +7,29 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Context } from "../components/Wrapper";
+import Modal from "react-modal";
+const modalStyle = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    textAlign: "center",
+  },
+};
 function Home() {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
   function clr() {
-    document.querySelectorAll(".clear").forEach((item) => item.value = "");
+    document.querySelectorAll(".clear").forEach((item) => (item.value = ""));
+    setIsOpen(true);
   }
   let brow;
   if (
@@ -49,7 +69,7 @@ function Home() {
   useEffect(() => {
     const axiosGet = async () => {
       const response = await axios.get(
-        "https://api.therepublicoftoys.uz/api/v1/statistic"
+        "https://api.dev.therepublicoftoys.uz/api/v1/statistic"
       );
       setStatisic(response?.data?.data[0]);
     };
@@ -58,7 +78,7 @@ function Home() {
   useEffect(() => {
     const axiosGet = async () => {
       const partner = await axios.get(
-        "https://api.therepublicoftoys.uz/api/v1/partner"
+        "https://api.dev.therepublicoftoys.uz/api/v1/partner"
       );
       setPartner(partner?.data?.data);
     };
@@ -106,7 +126,8 @@ function Home() {
   } = useForm();
 
   const onSubmit = (data) => {
-    window.scrollTo(0, 0);
+    openModal();
+    // window.scrollTo(0, 0);
     let fixDate = {
       // price: 0,
       name: data.name,
@@ -146,11 +167,21 @@ function Home() {
     };
     axios
       .post(
-        "https://api.therepublicoftoys.uz/api/v1/order",
+        "https://api.dev.therepublicoftoys.uz/api/v1/order",
         jsonToFormData(fixDate),
         { headers }
       )
       .then((response) => clr());
+    let botMessege = `
+      Assalomu aleykum😊%0A
+        Email: ${fixDate.price}%0A
+        Nomi: ${fixDate.name}%0A
+        Izohi: ${fixDate.product_name}%0A
+      `;
+    axios({
+      method: "get",
+      url: `https://api.telegram.org/bot5018242502:AAFWwydRp4iH-Gav3-LFUS85dYd30CLI7EU/sendMessage?chat_id=-1001747510834&text=${botMessege}&parse_mode=HTML`,
+    });
   };
 
   const [Showroom, setShowroom] = useState("");
@@ -158,7 +189,6 @@ function Home() {
   let context = useContext(Context);
   return (
     <div className="home">
-      {console.log("-----------------------------------", context.locale)}
       <div>
         <div className="slide__menu">
           <Slider {...settings}>
@@ -166,11 +196,9 @@ function Home() {
               <div className="slide__target">
                 <div className="item__one">
                   <h1>
-                    <FormattedMessage id="home.discount" /> -30%
+                    <FormattedMessage id="car.1" />
                   </h1>
-                  <p>
-                    <FormattedMessage id="home.slidetxt" />{" "}
-                  </p>
+                  <p></p>
                   <Link to="/product" style={{ padding: "0" }}>
                     <button>
                       <FormattedMessage id="home.more" />{" "}
@@ -191,11 +219,9 @@ function Home() {
               <div className="slide__target">
                 <div className="item__one">
                   <h1>
-                    <FormattedMessage id="home.discount" /> -30%
+                    <FormattedMessage id="car.2" />
                   </h1>
-                  <p>
-                    <FormattedMessage id="home.slidetxt" />{" "}
-                  </p>
+                  <p></p>
                   <Link to="/product" style={{ padding: "0" }}>
                     <button>
                       <FormattedMessage id="home.more" />{" "}
@@ -205,7 +231,31 @@ function Home() {
                 </div>
                 <div className="item__two">
                   <img
-                    src="./img/home/kamaz.png"
+                    src="./img/home/kamaz2.png"
+                    alt="toys"
+                    className={"slide__img"}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="slide__target">
+                <div className="item__one">
+                  <h1>
+                    <FormattedMessage id="car.3" />
+                  </h1>
+                  <p></p>
+                  <Link to="/product" style={{ padding: "0" }}>
+                    <button>
+                      <FormattedMessage id="home.more" />{" "}
+                      <img src="./img/home/btnarrow.svg" alt="toys" />
+                    </button>
+                  </Link>
+                </div>
+                <div className="item__two">
+                  <img
+                    src="./img/home/kamaz3.png"
                     alt="toys"
                     className={"slide__img"}
                   />
@@ -401,7 +451,7 @@ function Home() {
                 </p>
               </div>
               <div className="c__card" data-aos="flip-left">
-                <h1>{Statisic.info4}+</h1>
+                <h1>{Statisic.info4}</h1>
                 <p>
                   <FormattedMessage id="home.numberof4" />
                 </p>
@@ -492,7 +542,13 @@ function Home() {
                 <FormattedMessage id="home.lorem2" />
               </p>
             </div>
-            <img src="./img/home/map.svg" alt="map toys" />
+            {context.locale === "uz" ? (
+              <img src="./img/home/map_uz.svg" alt="map toys" />
+            ) : context.locale === "ru" ? (
+              <img src="./img/home/map.svg" alt="map toys" />
+            ) : (
+              <img src="./img/home/map_en.svg" alt="map toys" />
+            )}
           </div>
         </div>
         <div id="showroom">
@@ -557,7 +613,8 @@ function Home() {
                           <div className="card" data-aos="flip-left">
                             <img
                               src={
-                                "https://api.therepublicoftoys.uz/" + item.img
+                                "https://api.dev.therepublicoftoys.uz//" +
+                                item.img
                               }
                               alt="toys"
                             />
@@ -628,11 +685,7 @@ function Home() {
                 rows="10"
                 {...register("comment")}
               ></textarea>
-              <button
-               
-              >
-                Отправить
-              </button>
+              <button>Отправить</button>
             </form>
           ) : context.locale === "en" ? (
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -665,11 +718,7 @@ function Home() {
                 rows="10"
                 {...register("comment")}
               ></textarea>
-              <button
-               
-              >
-                Send
-              </button>
+              <button>Send</button>
             </form>
           ) : context.locale === "uz" ? (
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -689,7 +738,6 @@ function Home() {
                   {...register("name")}
                   className="clear"
                 />
-                clas{" "}
               </div>
               <textarea
                 name=""
@@ -700,11 +748,7 @@ function Home() {
                 rows="10"
                 {...register("comment")}
               ></textarea>
-              <button
-               
-              >
-                Yuborish
-              </button>
+              <button>Yuborish</button>
             </form>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -714,32 +758,27 @@ function Home() {
               <div className="row">
                 <input
                   type="email"
-                  placeholder="Email"
-                  className="clear"
+                  placeholder="E-mail"
                   {...register("number")}
-                  
+                  required
                 />
                 <input
                   type="text"
-                  placeholder="Ваша имя"
+                  placeholder="Ismingiz"
                   {...register("name")}
                   className="clear"
                 />
               </div>
               <textarea
                 name=""
-                placeholder="Сообщения"
+                placeholder="Izoh"
                 id=""
                 cols="30"
                 className="clear"
                 rows="10"
                 {...register("comment")}
               ></textarea>
-              <button
-               
-              >
-                Отправить
-              </button>
+              <button>Yuborish</button>
             </form>
           )}
         </div>
@@ -770,6 +809,22 @@ function Home() {
           src="https://therepublicoftoys.uz/showroom/showroom2/ToyFactory/index.htm"
         ></embed>
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={modalStyle}
+        contentLabel="Example Modal"
+        id={"bg__ff"}
+      >
+        <img
+          src="./img/home/check.png"
+          style={{ width: "14vw" }}
+          alt="success"
+        />
+        <h1>
+          <FormattedMessage id="car.4" />
+        </h1>
+      </Modal>
       {console.clear()}
     </div>
   );

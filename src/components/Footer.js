@@ -6,20 +6,20 @@ function Footer() {
     <div className={"footer"}>
       <footer>
         <div className="logo">
-          <img src="/img/footer/logo.svg" alt="" />
+         <a href="/"> <img src="/img/footer/logo.svg" alt="" /></a>
         </div>
         <div className="social">
           <p>
             <FormattedMessage id="footer.1" />
           </p>
           <div className="networking">
-            <a href="">
+            <a href="https://t.me/therepublicoftoys" target={"_blank"}>
               <img src="/img/footer/telegram.svg" alt="" />
             </a>
-            <a href="">
+            <a href="https://www.facebook.com/Polimer-Plastik_uz-106158995132744/" target={"_blank"}>
               <img src="/img/footer/facebook.svg" alt="" />
             </a>
-            <a href="">
+            <a href="https://www.instagram.com/polimerplastikuz/?utm_medium=copy_link" target={"_blank"}>
               <img src="/img/footer/igram.svg" alt="" />
             </a>
           </div>
@@ -28,7 +28,7 @@ function Footer() {
           <div className="row">
             <img src="/img/footer/call.svg" alt="" />
             <div>
-              <h3>+998 (55) 503-77-78</h3>
+              <h3>+998 (71) 248-34-94</h3>
               <p>
                 <FormattedMessage id="footer.2" />
               </p>

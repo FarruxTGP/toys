@@ -11,11 +11,11 @@
     "home.download": "Katalogni yuklab olish",
     "home.cotegory": "kategoriya",
     "home.gamers": "Aqliy rivojlanish uchun o'yinchoq",
-    "home.mader": "Eng yaxshi ishlab chiqaruvchi",
+    "home.mader": "Mo'jizaviy o'yinchoqlar ixtirochilari",
     "home.abouttxt": "Kompaniya 2009-yilda tashkil etilgan bo‘lib, hozirda yuzlab o‘yinchoqlar ishlab chiqarilmoqda. Korxona bolalar uchun turli turdagi plastik o‘yinchoqlar ishlab chiqaradi va ularni butun dunyoga eksport qiladi. O‘yinchoqlar zamonaviy texnologiyalar yordamida yuqori sifatli plastmassadan tayyorlangan.",
     "home.infograph": "infografika",
     "home.number": "Ko'rsatkichlar raqamlarda",
-    "home.numberof": "Xodimlar soni",
+    "home.numberof": "Mutaxassislar soni",
     "home.numberof2": "Mahsulot turlari",
     "home.numberof3": "O'yinchoqlar ishlab chiqarish tajribasi",
     "home.numberof4": "Eksport qilinadigan davlat",
@@ -57,11 +57,16 @@
      "prod.8": "Paket miqdori",
      "prod.9": "Sertifikat №1",
      "prod.10": "Yuklab olish",
+     "car.1": "Mahsulotlarimizdan zavqlaning",
+     "car.2": "Xavfsiz va bejirim",
+     "car.3": "Farzandlaringiz tanlovi",
+    "car.4": "Jo'natildi!",
+     "add.ab": "Bizning o'yinchoqlar fabrikamiz 2009-yilda tashkil topgan bo'lib, o'rta osiyodagi eng yirik zavodlardan biri hisoblanadi. Har yili Rossiya, Tojikiston, Qozoqiston, Azarbayjon, Qirg'iziston , Gruziya va boshqa davlatlarga katta miqdorda eksport amalga oshiradi. Hozirgi kunda, korxonamizda 40dan ziyod ishchi kuchi bo'lib, har bir mahsulotga alohida yondashilinadi. Bizning afvazlliklarimiz shundaki: o'yinchoqlarimizning barchasi yuqori sifatli plastmassalardan zamonaviy uskunalar yordamida ishlab chiqariladi. Yana bir ajoyib tomoni shundaki, bizdagi barcha mahsulotlar xilma-xilligi va rang- barangligi bilan ajralib turadi. Mijozlarimizning fikricha biz ishlab chiqarayotgan plastmassa o'yinchoqlar bolalar uchun eng xavsizidir. Farzandingizning bo'sh vaqtlari biz bilan yanada maroqli va zavqli. Bizning o'yinchoqlar kichkintoyingiz uchun eng yaxshi tanlovdir.",
     "footer.1": "Ijtimoiy tarmoqlarimizga obuna bo'ling va so'nggi yangiliklardan xabardor bo'ling!",
     "footer.2": "Har kuni soat 9:00 dan 20:00 gacha",
-    "footer.3": "Toshkent shahri, Olmazor tumani, Chalganzor – Mavzuk ko‘chasi 3-uy",
-    "home.lorem": "Korxonaga asos solinganiga 13 yil bo'ldi. Korxonada 100 dan ziyod mutaxasislar faoliyat yuritishmoqda. Korxona shu kungacha 350 ortiq turdagi o'yinchoqlarni ishlab chiqarib kelmoqda va 10 dan ziyod mamlakatlar bilan eksportni yo'lga qo'ygan",
-    "home.lorem2": "Korxona sifatli o'yinchoqlar ishlab chiqarish orqali ko'plab davlatlar orasida taniqli bo'lib, eksport davlatlar soni 10 dan ortdi. Ulardan Rossiya, Qozog'iston, Qirg'ziston, Tojikiston, Gruziya va Ozarbayjon davlatlari bilan manfaatli aloqalar tez - tez amalga oshirilib turiladi"
+    "footer.3": "Toshkent shahri, Olmazor tumani, Qorasaroy ko‘chasi 3-uy",
+    "home.lorem": "Korxonaga asos solinganiga 13 yil bo'ldi. Korxonada 100 dan ziyod mutaxasislar faoliyat yuritishmoqda. Korxona shu kungacha 350 ortiq turdagi o'yinchoqlarni ishlab chiqarib kelmoqda va 7 dan ziyod mamlakatlar bilan eksportni yo'lga qo'ygan",
+    "home.lorem2": "Korxona sifatli o'yinchoqlar ishlab chiqarish orqali ko'plab davlatlar orasida taniqli bo'lib, eksport davlatlar soni 7 dan ortdi. Ulardan Rossiya, Qozog'iston, Qirg'ziston, Tojikiston, Gruziya va Ozarbayjon davlatlari bilan manfaatli aloqalar tez - tez amalga oshirilib turiladi"
     
 
 

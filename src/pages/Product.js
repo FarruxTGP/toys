@@ -10,7 +10,7 @@ function Product() {
   useEffect(() => {
     const axiosGet = async () => {
       const response = await axios.get(
-        "https://api.therepublicoftoys.uz/api/v1/offers"
+        "https://api.dev.therepublicoftoys.uz/api/v1/offers"
       );
       setrest(response.data);
     };
@@ -79,7 +79,7 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
+                          "https://api.dev.therepublicoftoys.uz" + item?.img1
                         }
                         alt=""
                       />
@@ -109,7 +109,7 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
+                          "https://api.dev.therepublicoftoys.uz" + item?.img1
                         }
                         alt=""
                       />
@@ -139,7 +139,7 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
+                          "https://api.dev.therepublicoftoys.uz" + item?.img1
                         }
                         alt=""
                       />
@@ -169,7 +169,7 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
+                          "https://api.dev.therepublicoftoys.uz" + item?.img1
                         }
                         alt=""
                       />
@@ -199,7 +199,7 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
+                          "https://api.dev.therepublicoftoys.uz" + item?.img1
                         }
                         alt=""
                       />
@@ -229,7 +229,7 @@ function Product() {
                     <div className="offer">
                       <img
                         src={
-                          "https://api.therepublicoftoys.uz/img/" + item?.img?.[0]
+                          "https://api.dev.therepublicoftoys.uz" + item?.img1
                         }
                         alt=""
                       />

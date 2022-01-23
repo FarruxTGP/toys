@@ -33,7 +33,7 @@ function Offer() {
     let fixDate = {
       price: offer?.price || 0,
       name: data.name,
-      product_name: offer?.name_uz,
+      product_name: offer?.name,
       count: data.number,
     };
     function buildFormData(formData, data, parentKey) {
@@ -69,12 +69,22 @@ function Offer() {
     };
     axios
       .post(
-        "https://api.therepublicoftoys.uz/api/v1/order",
+        "https://api.dev.therepublicoftoys.uz/api/v1/order",
         jsonToFormData(fixDate),
         { headers }
       )
-      .then((response) => console.clear());
-    setIsOpen(false);
+      .then((response) => setIsOpen(false));
+      let botMessege = `
+      Assalomu aleykum😊%0A
+        Name: ${fixDate.name}%0A
+        Product_name: ${fixDate.product_name}%0A
+        Number: ${fixDate.count}%0A
+      `;
+    axios({
+      method: "get",
+      url: `https://api.telegram.org/bot5018242502:AAFWwydRp4iH-Gav3-LFUS85dYd30CLI7EU/sendMessage?chat_id=-1001747510834&text=${botMessege}&parse_mode=HTML`,
+    });
+    
   };
 
   const context = useContext(Context);
@@ -96,7 +106,7 @@ function Offer() {
   useEffect(() => {
     const axiosGet = async () => {
       const response = await axios.get(
-        "https://api.therepublicoftoys.uz/api/v1/offers"
+        "https://api.dev.therepublicoftoys.uz/api/v1/offers"
       );
       setrest(response.data);
     };
@@ -122,19 +132,19 @@ function Offer() {
             <div className="slide-holder">
               <img
                 className={"img__one"}
-                src={"https://api.therepublicoftoys.uz/img/" + offer?.img?.[0]}
+                src={"https://api.dev.therepublicoftoys.uz" + offer?.img1}
               />
             </div>
             <div className="slide-holder">
               <img
                 className={"img__one"}
-                src={"https://api.therepublicoftoys.uz/img/" + offer?.img?.[1]}
+                src={"https://api.dev.therepublicoftoys.uz" + offer?.img2}
               />
             </div>
             <div className="slide-holder">
               <img
                 className={"img__one"}
-                src={"https://api.therepublicoftoys.uz/img/" + offer?.img?.[2]}
+                src={"https://api.dev.therepublicoftoys.uz" + offer?.img3  }
               />
             </div>
           </Carousel>
@@ -324,11 +334,14 @@ function Offer() {
                     <FormattedMessage id="prod.8" />
                   </ReactTooltip>
                 </td>
-                <td>{offer?.count}  {context.locale === "uz"
-                          ? 'ta'
-                          : context.locale === "ru"
-                          ? 'шт'
-                          : ''}</td>
+                <td>
+                  {offer?.count}{" "}
+                  {context.locale === "uz"
+                    ? "ta"
+                    : context.locale === "ru"
+                    ? "шт"
+                    : ""}
+                </td>
               </tr>
               <tr>
                 <td className="color-grey">
@@ -339,21 +352,30 @@ function Offer() {
                   {offer?.file ? (
                     <a
                       className="btn btn-primary"
-                      href={"https://api.therepublicoftoys.uz/" + offer?.file}
+                      href={"https://api.dev.therepublicoftoys.uz//" + offer?.file}
                       download
                       target="_blank"
                     >
                       <FormattedMessage id="prod.10" />
                     </a>
                   ) : (
-                    <a
-                      className="btn btn-primary"
-                      aria-disabled
-                    >
+                    <a className="btn btn-primary" aria-disabled>
                       <FormattedMessage id="prod.10" />
                     </a>
                   )}
                 </td>
+              </tr>
+              <tr>
+                <td>
+                  <button onClick={openModal}>
+                    {context.locale === "uz"
+                      ? "Buyurtma"
+                      : context.locale === "ru"
+                      ? "Заказать"
+                      : "Order"}
+                  </button>
+                </td>
+                <td></td>
               </tr>
             </tbody>
           </table>
@@ -365,7 +387,7 @@ function Offer() {
             <a href={"/product/" + item.id}>
               <div className="offer">
                 <img
-                  src={"https://api.therepublicoftoys.uz/img/" + item.img[0]}
+                  src={"https://api.dev.therepublicoftoys.uz" + item.img1}
                   alt=""
                 />
                 <p>
@@ -394,15 +416,37 @@ function Offer() {
         style={modalStyle}
         contentLabel="Example Modal"
       >
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type="text"
-            placeholder="Ваш номер или e-mail"
-            {...register("number")}
-          />
-          <input type="text" placeholder="Ваша имя" {...register("name")} />
-          <button>Заказать</button>
-        </form>
+        {context.locale === "uz" ? (
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              type="text"
+              placeholder="Telefon raqam yoki e-mail"
+              {...register("number")} required
+            />
+            <input type="text" placeholder="Ismingiz" {...register("name")} required/>
+            <button>Buyurtma</button>
+          </form>
+        ) : context.locale === "ru" ? (
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              type="text"
+              placeholder="Ваш номер или e-mail"
+              {...register("number")} required
+            />
+            <input type="text" placeholder="Ваша имя" {...register("name")} required/>
+            <button>Заказать</button>
+          </form>
+        ) : (
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              type="text"
+              placeholder="Phone number or e-mail"
+              {...register("number")} required
+            />
+            <input type="text" placeholder="Name" {...register("name")} required/>
+            <button>Order</button>
+          </form>
+        )}
       </Modal>
     </>
   );

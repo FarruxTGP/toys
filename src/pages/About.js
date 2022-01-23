@@ -9,7 +9,7 @@ function About() {
             <FormattedMessage id="nav.about" />
           </h1>
           <p>
-            <FormattedMessage id="home.abouttxt" />
+            <FormattedMessage id="add.ab" />
           </p>
         </div>
         <div className="item__about">

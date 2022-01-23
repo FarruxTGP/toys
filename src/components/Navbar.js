@@ -11,6 +11,7 @@ function Navbar(props) {
   const aboutClass = location.pathname === "/about" ? "active" : "";
   const productClass = location.pathname === "/product" ? "active" : "";
   let audio = useRef();
+  const [content, setContent] = useState(false);
   const [changeimg, setchangeimg] = useState("/img/nav/volumeUp.svg");
   const play = () => {
     if (changeimg === "/img/nav/volumeMute.svg") {
@@ -18,6 +19,7 @@ function Navbar(props) {
       audio.current.audioEl.current.pause();
     } else {
       audio.current.audioEl.current.play();
+      setContent(true)
       setchangeimg("/img/nav/volumeMute.svg");
     }
   };
@@ -25,6 +27,16 @@ function Navbar(props) {
     setchangeimg("/img/nav/volumeMute.svg") &&
       console.log(audio.current.audioEl.current);
   };
+  window.onscroll = function () {
+    if(content === true){
+      return ''
+    } else{
+      audio?.current?.audioEl?.current?.play();
+    }
+  }
+  function start() {
+    audio?.current?.audioEl?.current?.play();
+  }
   const [volMusic, setvolMusic] = useState();
   const change = (e) => {
     setvolMusic(e.target.value / 100);
@@ -46,8 +58,8 @@ function Navbar(props) {
   };
 
   return (
-    <div className="nav">
-      <nav>
+    <div className="nav" onMouseEnter={start}>
+      <nav> 
         <div className="logo">
           <Link to="/">
             {" "}
@@ -111,10 +123,10 @@ function Navbar(props) {
             </div>
           </li>
           <li onClick={toggleClass}>
-            <a href="tel: +998901312000">
+            <a href="tel: +998712483494">
               <button style={{ borderRadius: ".6vw" }}>
                 <img src="/img/nav/call.svg" alt="" style={{ width: "1vw" }} />
-                90 1312000
+                99 111 17 33
               </button>
             </a>
           </li>
