@@ -19,7 +19,7 @@ function Navbar(props) {
       audio.current.audioEl.current.pause();
     } else {
       audio.current.audioEl.current.play();
-      setContent(true)
+      setContent(true);
       setchangeimg("/img/nav/volumeMute.svg");
     }
   };
@@ -28,12 +28,12 @@ function Navbar(props) {
       console.log(audio.current.audioEl.current);
   };
   window.onscroll = function () {
-    if(content === true){
-      return ''
-    } else{
+    if (content === true) {
+      return "";
+    } else {
       audio?.current?.audioEl?.current?.play();
     }
-  }
+  };
   function start() {
     audio?.current?.audioEl?.current?.play();
   }
@@ -59,7 +59,7 @@ function Navbar(props) {
 
   return (
     <div className="nav" onMouseEnter={start}>
-      <nav> 
+      <nav>
         <div className="logo">
           <Link to="/">
             {" "}
@@ -100,9 +100,9 @@ function Navbar(props) {
           </li>
           <li>
             <select value={context.locale} onChange={context.selectLanguage}>
-              <option value="en">En</option>
-              <option value="ru">Ру</option>
+            <option value="en">En</option>
               <option value="uz">O'z</option>
+              <option value="ru">Ру</option>
             </select>
           </li>
           <li onClick={toggleClass}>

@@ -90,7 +90,7 @@ function Product() {
                           ? item.title_ru
                           : item.title_en}
                       </p>
-                      <span>{item?.price} uzs</span>
+                      <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />
@@ -120,7 +120,7 @@ function Product() {
                           ? item.title_ru
                           : item.title_en}
                       </p>
-                      <span>{item?.price} uzs</span>
+                      <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />
@@ -150,7 +150,7 @@ function Product() {
                           ? item.title_ru
                           : item.title_en}
                       </p>
-                      <span>{item?.price} uzs</span>
+                      <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />
@@ -180,7 +180,7 @@ function Product() {
                           ? item.title_ru
                           : item.title_en}
                       </p>
-                      <span>{item?.price} uzs</span>
+                      <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />
@@ -210,7 +210,7 @@ function Product() {
                           ? item.title_ru
                           : item.title_en}
                       </p>
-                      <span>{item?.price} uzs</span>
+                      <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />
@@ -240,7 +240,7 @@ function Product() {
                           ? item.title_ru
                           : item.title_en}
                       </p>
-                      <span>{item?.price} uzs</span>
+                      <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
                         <span>Подробнее</span>
                         <img src={"./img/home/cardar.svg"} alt="" />

@@ -266,10 +266,12 @@ function Home() {
         </div>
         <div className="download__cat">
           <div className="container">
-            <button>
-              <img src="./img/home/down.svg" alt="toys" />{" "}
-              <FormattedMessage id="home.download" />
-            </button>
+            <a href="/img/down.pdf" download={"pdf"}>
+              <button>
+                <img src="./img/home/down.svg" alt="toys" />{" "}
+                <FormattedMessage id="home.download" />
+              </button>
+            </a>
           </div>
         </div>
         <div className="container">
@@ -542,12 +544,12 @@ function Home() {
                 <FormattedMessage id="home.lorem2" />
               </p>
             </div>
-            {context.locale === "uz" ? (
-              <img src="./img/home/map_uz.svg" alt="map toys" />
+            {context.locale === "en" ? (
+              <img src="./img/home/map_en.svg" alt="map toys" />
             ) : context.locale === "ru" ? (
               <img src="./img/home/map.svg" alt="map toys" />
             ) : (
-              <img src="./img/home/map_en.svg" alt="map toys" />
+              <img src="./img/home/map_uz.svg" alt="map toys" />
             )}
           </div>
         </div>
@@ -759,26 +761,29 @@ function Home() {
                 <input
                   type="email"
                   placeholder="E-mail"
+                  className="clear"
                   {...register("number")}
                   required
                 />
                 <input
+                  clas
                   type="text"
-                  placeholder="Ismingiz"
+                  placeholder="Name"
+                  className="clear"
                   {...register("name")}
                   className="clear"
                 />
               </div>
               <textarea
                 name=""
-                placeholder="Izoh"
+                placeholder="Message"
                 id=""
                 cols="30"
                 className="clear"
                 rows="10"
                 {...register("comment")}
               ></textarea>
-              <button>Yuborish</button>
+              <button>Send</button>
             </form>
           )}
         </div>

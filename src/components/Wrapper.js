@@ -15,7 +15,7 @@ if (local === 'en') {
     if (local === 'uz') {
         lang = Uzbek;
     } else {
-        lang = Uzbek;
+        lang = English;
     }
 }
 
