@@ -761,29 +761,26 @@ function Home() {
                 <input
                   type="email"
                   placeholder="E-mail"
-                  className="clear"
                   {...register("number")}
                   required
                 />
                 <input
-                  clas
                   type="text"
-                  placeholder="Name"
-                  className="clear"
+                  placeholder="Ismingiz"
                   {...register("name")}
                   className="clear"
                 />
               </div>
               <textarea
                 name=""
-                placeholder="Message"
+                placeholder="Izoh"
                 id=""
                 cols="30"
                 className="clear"
                 rows="10"
                 {...register("comment")}
               ></textarea>
-              <button>Send</button>
+              <button>Yuborish</button>
             </form>
           )}
         </div>

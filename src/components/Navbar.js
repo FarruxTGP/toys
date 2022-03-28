@@ -100,9 +100,9 @@ function Navbar(props) {
           </li>
           <li>
             <select value={context.locale} onChange={context.selectLanguage}>
-            <option value="en">En</option>
               <option value="uz">O'z</option>
               <option value="ru">Ру</option>
+              <option value="en">En</option>
             </select>
           </li>
           <li onClick={toggleClass}>

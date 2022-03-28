@@ -88,7 +88,7 @@ function Product() {
                           ? item.title_uz
                           : context.locale === "ru"
                           ? item.title_ru
-                          : item.title_en}
+                          : item.title_uz}
                       </p>
                       <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
@@ -118,7 +118,7 @@ function Product() {
                           ? item.title_uz
                           : context.locale === "ru"
                           ? item.title_ru
-                          : item.title_en}
+                          : item.title_uz}
                       </p>
                       <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
@@ -148,7 +148,7 @@ function Product() {
                           ? item.title_uz
                           : context.locale === "ru"
                           ? item.title_ru
-                          : item.title_en}
+                          : item.title_uz}
                       </p>
                       <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
@@ -178,7 +178,7 @@ function Product() {
                           ? item.title_uz
                           : context.locale === "ru"
                           ? item.title_ru
-                          : item.title_en}
+                          : item.title_uz}
                       </p>
                       <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
@@ -208,7 +208,7 @@ function Product() {
                           ? item.title_uz
                           : context.locale === "ru"
                           ? item.title_ru
-                          : item.title_en}
+                          : item.title_uz}
                       </p>
                       <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
@@ -238,7 +238,7 @@ function Product() {
                           ? item.title_uz
                           : context.locale === "ru"
                           ? item.title_ru
-                          : item.title_en}
+                          : item.title_uz}
                       </p>
                       <span><FormattedMessage id="sums"/></span>
                       <div className="hover__offer">
